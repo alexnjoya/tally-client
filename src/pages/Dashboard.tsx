@@ -1,13 +1,18 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Search, ChevronDown, BarChart3 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Star, Search, BarChart3 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const navigate = useNavigate();
+
   const elections = [
     {
       id: 1,
@@ -30,6 +35,13 @@ const Dashboard = () => {
       status: "active"
     }
   ];
+
+  const filteredElections = elections.filter(election => {
+    const matchesSearch = election.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         election.subtitle.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === "all" || election.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
 
   return (
     <div className="space-y-6">
@@ -57,14 +69,18 @@ const Dashboard = () => {
         <div className="flex gap-4 mb-6">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-            <Input placeholder="search" className="pl-10" />
+            <Input 
+              placeholder="search" 
+              className="pl-10" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
-          <Select>
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
             <SelectTrigger className="w-48">
               <SelectValue placeholder="Filter by status" />
-              <ChevronDown className="h-4 w-4" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border border-gray-200 shadow-lg z-50">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="active">Active</SelectItem>
               <SelectItem value="completed">Completed</SelectItem>
@@ -75,8 +91,12 @@ const Dashboard = () => {
 
         {/* Elections List */}
         <div className="space-y-4">
-          {elections.map((election, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer" onClick={() => window.location.href = `/app/election/${election.id}`}>
+          {filteredElections.map((election) => (
+            <Card 
+              key={election.id} 
+              className="hover:shadow-md transition-shadow cursor-pointer" 
+              onClick={() => navigate(`/app/election/${election.id}`)}
+            >
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -108,7 +128,7 @@ const Dashboard = () => {
                         size="sm"
                         onClick={(e) => {
                           e.stopPropagation();
-                          window.location.href = `/app/analytics/${election.id}`;
+                          navigate(`/app/election/${election.id}?tab=analytics`);
                         }}
                       >
                         <BarChart3 className="h-4 w-4 mr-2" />
@@ -119,7 +139,7 @@ const Dashboard = () => {
                         className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                         onClick={(e) => {
                           e.stopPropagation();
-                          window.location.href = '/app/launch';
+                          navigate('/app/launch');
                         }}
                       >
                         Launch
