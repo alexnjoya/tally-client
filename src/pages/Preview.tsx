@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Eye, ExternalLink, Calendar, Users, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Preview = () => {
+  const { toast } = useToast();
+
   const mockElections = [
     {
       id: 1,
@@ -36,6 +39,15 @@ const Preview = () => {
       case "completed": return "bg-blue-100 text-blue-800";
       default: return "bg-gray-100 text-gray-800";
     }
+  };
+
+  const handleTestVote = (electionId: number) => {
+    toast({
+      title: "Test Vote Initiated",
+      description: "Opening test voting interface...",
+    });
+    // Navigate to test voting page
+    window.location.href = `/app/test-vote/${electionId}`;
   };
 
   return (
@@ -106,7 +118,7 @@ const Preview = () => {
                   className="flex items-center gap-2"
                   asChild
                 >
-                  <Link to={`/app/preview/${election.id}`}>
+                  <Link to={`/app/ballot-preview/${election.id}`}>
                     <Eye className="h-4 w-4" />
                     Preview Ballot
                   </Link>
@@ -114,14 +126,18 @@ const Preview = () => {
                 <Button 
                   variant="outline" 
                   className="flex items-center gap-2"
+                  onClick={() => handleTestVote(election.id)}
                 >
                   <ExternalLink className="h-4 w-4" />
                   Test Vote
                 </Button>
                 <Button 
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  asChild
                 >
-                  Launch Election
+                  <Link to="/app/launch">
+                    Launch Election
+                  </Link>
                 </Button>
               </div>
             </CardContent>

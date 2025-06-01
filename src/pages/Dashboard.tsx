@@ -4,12 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Search, ChevronDown } from "lucide-react";
+import { Star, Search, ChevronDown, BarChart3 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const elections = [
     {
+      id: 1,
       title: "Department 1",
       subtitle: "Building",
       startDate: "Jun 10, 2024",
@@ -19,6 +20,7 @@ const Dashboard = () => {
       status: "active"
     },
     {
+      id: 2,
       title: "Organisation 1", 
       subtitle: "Building",
       startDate: "Jun 10, 2024",
@@ -74,7 +76,7 @@ const Dashboard = () => {
         {/* Elections List */}
         <div className="space-y-4">
           {elections.map((election, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow">
+            <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer" onClick={() => window.location.href = `/app/election/${election.id}`}>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -99,6 +101,29 @@ const Dashboard = () => {
                         </Badge>
                         <span className="text-sm text-gray-600">{election.endTime}</span>
                       </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.location.href = `/app/analytics/${election.id}`;
+                        }}
+                      >
+                        <BarChart3 className="h-4 w-4 mr-2" />
+                        Analytics
+                      </Button>
+                      <Button 
+                        size="sm"
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.location.href = '/app/launch';
+                        }}
+                      >
+                        Launch
+                      </Button>
                     </div>
                   </div>
                 </div>

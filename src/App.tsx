@@ -16,6 +16,8 @@ import Preview from "./pages/Preview";
 import Addons from "./pages/Addons";
 import Launch from "./pages/Launch";
 import Index from "./pages/Index";
+import ElectionDetail from "./pages/ElectionDetail";
+import BallotPreview from "./pages/BallotPreview";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +40,10 @@ const App = () => (
               <Route path="preview" element={<Preview />} />
               <Route path="addons" element={<Addons />} />
               <Route path="launch" element={<Launch />} />
+              <Route path="election/:id" element={<ElectionDetail />} />
+              <Route path="ballot-preview/:id" element={<BallotPreview />} />
+              <Route path="analytics/:id" element={<Dashboard />} />
+              <Route path="test-vote/:id" element={<BallotPreview />} />
             </Route>
           </Routes>
         </SidebarProvider>
