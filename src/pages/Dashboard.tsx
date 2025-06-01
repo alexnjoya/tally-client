@@ -1,0 +1,124 @@
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Star, Search, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Dashboard = () => {
+  const elections = [
+    {
+      title: "Department 1",
+      subtitle: "Building",
+      startDate: "Jun 10, 2024",
+      startTime: "9:41 AM",
+      endDate: "Jun 10, 2024", 
+      endTime: "9:41 AM",
+      status: "active"
+    },
+    {
+      title: "Organisation 1", 
+      subtitle: "Building",
+      startDate: "Jun 10, 2024",
+      startTime: "9:41 AM", 
+      endDate: "Jun 10, 2024",
+      endTime: "9:41 AM",
+      status: "active"
+    }
+  ];
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+            <span>Dashboard</span>
+            <span>Settings</span>
+          </nav>
+        </div>
+        <Link to="/app/election-setup">
+          <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+            <Star className="h-4 w-4 mr-2" />
+            New Election
+          </Button>
+        </Link>
+      </div>
+
+      {/* Recent Elections */}
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Recent Election</h2>
+        
+        {/* Search and Filter */}
+        <div className="flex gap-4 mb-6">
+          <div className="relative flex-1 max-w-md">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Input placeholder="search" className="pl-10" />
+          </div>
+          <Select>
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Filter by status" />
+              <ChevronDown className="h-4 w-4" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Status</SelectItem>
+              <SelectItem value="active">Active</SelectItem>
+              <SelectItem value="completed">Completed</SelectItem>
+              <SelectItem value="draft">Draft</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Elections List */}
+        <div className="space-y-4">
+          {elections.map((election, index) => (
+            <Card key={index} className="hover:shadow-md transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{election.title}</h3>
+                    <p className="text-gray-600">{election.subtitle}</p>
+                  </div>
+                  <div className="flex gap-8">
+                    <div className="text-right">
+                      <p className="text-sm text-gray-500 mb-1">Start Date</p>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+                          {election.startDate}
+                        </Badge>
+                        <span className="text-sm text-gray-600">{election.startTime}</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm text-gray-500 mb-1">End Date</p>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+                          {election.endDate}
+                        </Badge>
+                        <span className="text-sm text-gray-600">{election.endTime}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center items-center space-x-2 mt-8">
+          <Button variant="default" size="sm" className="bg-gray-900 text-white">1</Button>
+          <Button variant="outline" size="sm">2</Button>
+          <Button variant="outline" size="sm">3</Button>
+          <span className="text-gray-500">...</span>
+          <Button variant="outline" size="sm">67</Button>
+          <Button variant="outline" size="sm">68</Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
