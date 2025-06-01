@@ -48,7 +48,7 @@ const Dashboard = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+          <nav className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
             <span>Dashboard</span>
             <span>Settings</span>
           </nav>
@@ -63,24 +63,24 @@ const Dashboard = () => {
 
       {/* Recent Elections */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Recent Election</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Recent Election</h2>
         
         {/* Search and Filter */}
         <div className="flex gap-4 mb-6">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 h-4 w-4" />
             <Input 
               placeholder="search" 
-              className="pl-10" 
+              className="pl-10 bg-white dark:bg-[#2a2a2a] border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 bg-white dark:bg-[#2a2a2a] border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
               <SelectValue placeholder="Filter by status" />
             </SelectTrigger>
-            <SelectContent className="bg-white border border-gray-200 shadow-lg z-50">
+            <SelectContent className="bg-white dark:bg-[#2a2a2a] border border-gray-200 dark:border-gray-700 shadow-lg z-50">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="active">Active</SelectItem>
               <SelectItem value="completed">Completed</SelectItem>
@@ -94,38 +94,39 @@ const Dashboard = () => {
           {filteredElections.map((election) => (
             <Card 
               key={election.id} 
-              className="hover:shadow-md transition-shadow cursor-pointer" 
+              className="hover:shadow-md transition-shadow cursor-pointer bg-white dark:bg-[#2a2a2a] border-gray-200 dark:border-gray-700" 
               onClick={() => navigate(`/app/election/${election.id}`)}
             >
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{election.title}</h3>
-                    <p className="text-gray-600">{election.subtitle}</p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">{election.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">{election.subtitle}</p>
                   </div>
                   <div className="flex gap-8">
                     <div className="text-right">
-                      <p className="text-sm text-gray-500 mb-1">Start Date</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Start Date</p>
                       <div className="flex items-center gap-2">
-                        <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+                        <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
                           {election.startDate}
                         </Badge>
-                        <span className="text-sm text-gray-600">{election.startTime}</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-400">{election.startTime}</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm text-gray-500 mb-1">End Date</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">End Date</p>
                       <div className="flex items-center gap-2">
-                        <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+                        <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
                           {election.endDate}
                         </Badge>
-                        <span className="text-sm text-gray-600">{election.endTime}</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-400">{election.endTime}</span>
                       </div>
                     </div>
                     <div className="flex gap-2">
                       <Button 
                         variant="outline" 
                         size="sm"
+                        className="border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700"
                         onClick={(e) => {
                           e.stopPropagation();
                           navigate(`/app/election/${election.id}?tab=analytics`);
@@ -154,12 +155,12 @@ const Dashboard = () => {
 
         {/* Pagination */}
         <div className="flex justify-center items-center space-x-2 mt-8">
-          <Button variant="default" size="sm" className="bg-gray-900 text-white">1</Button>
-          <Button variant="outline" size="sm">2</Button>
-          <Button variant="outline" size="sm">3</Button>
-          <span className="text-gray-500">...</span>
-          <Button variant="outline" size="sm">67</Button>
-          <Button variant="outline" size="sm">68</Button>
+          <Button variant="default" size="sm" className="bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900">1</Button>
+          <Button variant="outline" size="sm" className="border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700">2</Button>
+          <Button variant="outline" size="sm" className="border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700">3</Button>
+          <span className="text-gray-500 dark:text-gray-400">...</span>
+          <Button variant="outline" size="sm" className="border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700">67</Button>
+          <Button variant="outline" size="sm" className="border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700">68</Button>
         </div>
       </div>
     </div>
