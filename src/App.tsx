@@ -12,6 +12,9 @@ import BallotBuilder from "./pages/BallotBuilder";
 import AccountVerification from "./pages/AccountVerification";
 import VoterSettings from "./pages/VoterSettings";
 import Settings from "./pages/Settings";
+import Preview from "./pages/Preview";
+import Addons from "./pages/Addons";
+import Launch from "./pages/Launch";
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
               <Route path="account-verification" element={<AccountVerification />} />
               <Route path="voter-settings" element={<VoterSettings />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="preview" element={<Preview />} />
+              <Route path="addons" element={<Addons />} />
+              <Route path="launch" element={<Launch />} />
             </Route>
           </Routes>
         </SidebarProvider>
