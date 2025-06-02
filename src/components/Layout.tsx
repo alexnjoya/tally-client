@@ -11,7 +11,9 @@ const Layout = () => {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
     }
@@ -31,27 +33,39 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen flex w-full bg-gray-50 dark:bg-[#1a1a1a]">
+    <div className="min-h-screen flex w-full bg-background transition-colors duration-300">
       <AppSidebar />
-      <div className="flex-1 flex flex-col">
-        <header className="h-16 bg-white dark:bg-[#2a2a2a] border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 shadow-sm">
-          <div className="flex items-center gap-4">
-            <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Dashboard</h1>
+      
+      <div className="flex-1 flex flex-col min-w-0">
+        <header className="h-14 sm:h-16 bg-card border-b border-border flex items-center justify-between px-4 sm:px-6 shadow-sm backdrop-blur-sm bg-card/80 sticky top-0 z-40">
+          <div className="flex items-center gap-4 min-w-0">
+            <h1 className="text-lg sm:text-xl font-semibold text-foreground truncate">
+              Dashboard
+            </h1>
           </div>
-          <div className="flex items-center gap-4">
+          
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              className="h-8 w-8 sm:h-9 sm:w-9 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
-              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDarkMode ? (
+                <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
+              ) : (
+                <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
+              )}
             </Button>
             <ProfileDropdown />
           </div>
         </header>
-        <main className="flex-1 p-6">
-          <Outlet />
+        
+        <main className="flex-1 overflow-auto scrollbar-thin scrollbar-track-transparent dark:scrollbar-dark">
+          <div className="h-full">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

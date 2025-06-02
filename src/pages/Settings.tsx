@@ -7,269 +7,251 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Wallet, Shield, Bell, User, Key, Link, Trash2, Copy, CheckCircle } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { ArrowLeft, User, Bell, Shield, Key } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
-  const [connectedWallet, setConnectedWallet] = useState("");
-  const [walletAddress, setWalletAddress] = useState("0x742d35Cc6634C0532925a3b8D84F23AE");
-  const [notifications, setNotifications] = useState(true);
+  const navigate = useNavigate();
+  const [emailNotifications, setEmailNotifications] = useState(true);
+  const [pushNotifications, setPushNotifications] = useState(false);
   const [twoFactor, setTwoFactor] = useState(false);
-  const [apiKey, setApiKey] = useState("tally_sk_test_51234567890abcdef");
-  const [showApiKey, setShowApiKey] = useState(false);
-  const { toast } = useToast();
-
-  const handleConnectWallet = async (walletType: string) => {
-    try {
-      // Simulate wallet connection
-      setConnectedWallet(walletType);
-      toast({
-        title: "Wallet Connected",
-        description: `Successfully connected to ${walletType}`,
-      });
-    } catch (error) {
-      toast({
-        title: "Connection Failed",
-        description: "Failed to connect wallet. Please try again.",
-        variant: "destructive",
-      });
-    }
-  };
-
-  const handleDisconnectWallet = () => {
-    setConnectedWallet("");
-    setWalletAddress("");
-    toast({
-      title: "Wallet Disconnected",
-      description: "Your wallet has been disconnected successfully.",
-    });
-  };
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    toast({
-      title: "Copied!",
-      description: "Copied to clipboard",
-    });
-  };
-
-  const generateNewApiKey = () => {
-    const newKey = `tally_sk_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    setApiKey(newKey);
-    toast({
-      title: "New API Key Generated",
-      description: "Your new API key has been generated successfully.",
-    });
-  };
 
   return (
-    <div className="space-y-6 max-w-4xl">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-        <p className="text-gray-600 mt-2">Manage your account settings and blockchain connections</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate(-1)}
+            className="h-8 w-8 rounded-lg hover:bg-muted"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </Button>
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+            <p className="text-sm text-muted-foreground">Manage your account preferences</p>
+          </div>
+        </div>
 
-      {/* Blockchain Wallet Settings */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Wallet className="h-5 w-5" />
-            Blockchain Wallet
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {connectedWallet ? (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 border border-green-200 bg-green-50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <div>
-                    <p className="font-medium text-green-900">{connectedWallet} Connected</p>
-                    <p className="text-sm text-green-700">
-                      {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
-                    </p>
-                  </div>
+        <div className="space-y-6">
+          {/* Profile Section */}
+          <Card className="border-border bg-card shadow-sm">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <User className="h-5 w-5 text-primary" />
+                Profile Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="first-name" className="text-sm font-medium">First Name</Label>
+                  <Input 
+                    id="first-name" 
+                    defaultValue="John" 
+                    className="bg-background border-input"
+                  />
                 </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => copyToClipboard(walletAddress)}
-                  >
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={handleDisconnectWallet}
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
+                <div className="space-y-2">
+                  <Label htmlFor="last-name" className="text-sm font-medium">Last Name</Label>
+                  <Input 
+                    id="last-name" 
+                    defaultValue="Doe" 
+                    className="bg-background border-input"
+                  />
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 border rounded-lg">
-                  <p className="text-sm font-medium">Network</p>
-                  <p className="text-lg">Ethereum Mainnet</p>
-                </div>
-                <div className="p-3 border rounded-lg">
-                  <p className="text-sm font-medium">Balance</p>
-                  <p className="text-lg">2.45 ETH</p>
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  defaultValue="john@university.edu" 
+                  className="bg-background border-input"
+                />
               </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <p className="text-gray-600">Connect your blockchain wallet to participate in elections</p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Button
-                  onClick={() => handleConnectWallet("MetaMask")}
-                  className="flex items-center gap-2 h-12"
-                  variant="outline"
-                >
-                  <Wallet className="h-5 w-5" />
-                  MetaMask
-                </Button>
-                <Button
-                  onClick={() => handleConnectWallet("WalletConnect")}
-                  className="flex items-center gap-2 h-12"
-                  variant="outline"
-                >
-                  <Link className="h-5 w-5" />
-                  WalletConnect
-                </Button>
-                <Button
-                  onClick={() => handleConnectWallet("Coinbase Wallet")}
-                  className="flex items-center gap-2 h-12"
-                  variant="outline"
-                >
-                  <Wallet className="h-5 w-5" />
-                  Coinbase
-                </Button>
+              
+              <div className="space-y-2">
+                <Label htmlFor="institution" className="text-sm font-medium">Institution</Label>
+                <Input 
+                  id="institution" 
+                  defaultValue="University of Ghana" 
+                  className="bg-background border-input"
+                />
               </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+              
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-sm font-medium">Phone Number</Label>
+                <Input 
+                  id="phone" 
+                  type="tel" 
+                  placeholder="+1 (555) 000-0000" 
+                  className="bg-background border-input"
+                />
+              </div>
+            </CardContent>
+          </Card>
 
-      {/* Security Settings */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Security
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Two-Factor Authentication</p>
-              <p className="text-sm text-gray-600">Add an extra layer of security to your account</p>
-            </div>
-            <Switch checked={twoFactor} onCheckedChange={setTwoFactor} />
-          </div>
-          
-          <Separator />
-          
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="api-key" className="text-base font-medium">API Key</Label>
-              <Badge variant="secondary">Development</Badge>
-            </div>
-            <div className="flex gap-2">
-              <Input
-                id="api-key"
-                value={showApiKey ? apiKey : apiKey.replace(/./g, "•")}
-                readOnly
-                className="font-mono"
-              />
-              <Button
-                variant="outline"
-                onClick={() => setShowApiKey(!showApiKey)}
-              >
-                {showApiKey ? "Hide" : "Show"}
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => copyToClipboard(apiKey)}
-              >
-                <Copy className="h-4 w-4" />
-              </Button>
-            </div>
-            <Button variant="destructive" onClick={generateNewApiKey}>
-              <Key className="h-4 w-4 mr-2" />
-              Regenerate API Key
+          {/* Notifications Section */}
+          <Card className="border-border bg-card shadow-sm">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Bell className="h-5 w-5 text-primary" />
+                Notification Preferences
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <p className="font-medium text-foreground">Email Notifications</p>
+                  <p className="text-sm text-muted-foreground">Receive updates via email</p>
+                </div>
+                <Switch 
+                  checked={emailNotifications} 
+                  onCheckedChange={setEmailNotifications}
+                  className="data-[state=checked]:bg-primary"
+                />
+              </div>
+              
+              <Separator className="bg-border" />
+              
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <p className="font-medium text-foreground">Push Notifications</p>
+                  <p className="text-sm text-muted-foreground">Get notified about important updates</p>
+                </div>
+                <Switch 
+                  checked={pushNotifications} 
+                  onCheckedChange={setPushNotifications}
+                  className="data-[state=checked]:bg-primary"
+                />
+              </div>
+              
+              <Separator className="bg-border" />
+              
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <p className="font-medium text-foreground">Election Reminders</p>
+                  <p className="text-sm text-muted-foreground">Reminders about upcoming elections</p>
+                </div>
+                <Switch 
+                  defaultChecked 
+                  className="data-[state=checked]:bg-primary"
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Security Section */}
+          <Card className="border-border bg-card shadow-sm">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Shield className="h-5 w-5 text-primary" />
+                Security & Privacy
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <p className="font-medium text-foreground">Two-Factor Authentication</p>
+                  <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Badge variant={twoFactor ? "default" : "secondary"} className="text-xs">
+                    {twoFactor ? "Enabled" : "Disabled"}
+                  </Badge>
+                  <Switch 
+                    checked={twoFactor} 
+                    onCheckedChange={setTwoFactor}
+                    className="data-[state=checked]:bg-primary"
+                  />
+                </div>
+              </div>
+              
+              <Separator className="bg-border" />
+              
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Key className="h-4 w-4 text-primary" />
+                  <Label className="text-sm font-medium">Change Password</Label>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="current-password" className="text-xs text-muted-foreground">Current Password</Label>
+                    <Input 
+                      id="current-password" 
+                      type="password" 
+                      className="bg-background border-input"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="new-password" className="text-xs text-muted-foreground">New Password</Label>
+                    <Input 
+                      id="new-password" 
+                      type="password" 
+                      className="bg-background border-input"
+                    />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Preferences Section */}
+          <Card className="border-border bg-card shadow-sm">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">General Preferences</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <p className="font-medium text-foreground">Language</p>
+                  <p className="text-sm text-muted-foreground">Choose your preferred language</p>
+                </div>
+                <select className="px-3 py-2 bg-background border border-input rounded-md text-sm min-w-[120px]">
+                  <option>English</option>
+                  <option>Spanish</option>
+                  <option>French</option>
+                </select>
+              </div>
+              
+              <Separator className="bg-border" />
+              
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <p className="font-medium text-foreground">Time Zone</p>
+                  <p className="text-sm text-muted-foreground">Set your local time zone</p>
+                </div>
+                <select className="px-3 py-2 bg-background border border-input rounded-md text-sm min-w-[160px]">
+                  <option>GMT (UTC+0)</option>
+                  <option>EST (UTC-5)</option>
+                  <option>PST (UTC-8)</option>
+                </select>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-6 pb-8">
+            <Button 
+              className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+              size="lg"
+            >
+              Save Changes
+            </Button>
+            <Button 
+              variant="outline" 
+              className="flex-1 border-border hover:bg-muted"
+              size="lg"
+            >
+              Cancel
             </Button>
           </div>
-        </CardContent>
-      </Card>
-
-      {/* Notification Settings */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Bell className="h-5 w-5" />
-            Notifications
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Election Notifications</p>
-              <p className="text-sm text-gray-600">Get notified about election updates</p>
-            </div>
-            <Switch checked={notifications} onCheckedChange={setNotifications} />
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Blockchain Confirmations</p>
-              <p className="text-sm text-gray-600">Receive transaction confirmation alerts</p>
-            </div>
-            <Switch defaultChecked />
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Security Alerts</p>
-              <p className="text-sm text-gray-600">Get notified of security-related events</p>
-            </div>
-            <Switch defaultChecked />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Profile Settings */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <User className="h-5 w-5" />
-            Profile
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="first-name">First Name</Label>
-              <Input id="first-name" defaultValue="John" />
-            </div>
-            <div>
-              <Label htmlFor="last-name">Last Name</Label>
-              <Input id="last-name" defaultValue="Doe" />
-            </div>
-          </div>
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" defaultValue="john@university.edu" />
-          </div>
-          <div>
-            <Label htmlFor="institution">Institution</Label>
-            <Input id="institution" defaultValue="University of Ghana" />
-          </div>
-          <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-            Save Changes
-          </Button>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
