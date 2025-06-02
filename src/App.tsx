@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +17,7 @@ import Launch from "./pages/Launch";
 import Index from "./pages/Index";
 import ElectionDetail from "./pages/ElectionDetail";
 import BallotPreview from "./pages/BallotPreview";
+import Overview from "./pages/Overview";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +32,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/app" element={<Layout />}>
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="overview" element={<Overview />} />
               <Route path="election-setup" element={<ElectionSetup />} />
               <Route path="ballot" element={<BallotBuilder />} />
               <Route path="account-verification" element={<AccountVerification />} />
