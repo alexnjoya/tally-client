@@ -19,9 +19,9 @@ const Overview = () => {
     status: "active",
     totalVoters: 245,
     votesCount: 123,
-    electionUrl: "https://vote.electionrunner.com/election/7fMk5",
+    electionUrl: "https://vote.tally.com/election/7fMk5",
     shortUrl: "https://vote.er.com/7fMk5",
-    previewUrl: "https://vote.electionrunner.com/preview/7fMk5/s4LzWQtFgO32FTOV"
+    previewUrl: "https://vote.tally.com/preview/7fMk5/s4LzWQtFgO32FTOV"
   };
 
   const copyToClipboard = (text: string, field: string) => {

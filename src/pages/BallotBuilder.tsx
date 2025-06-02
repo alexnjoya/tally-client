@@ -65,15 +65,6 @@ const BallotBuilder = () => {
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-2xl">
-              <DialogHeader>
-                <div className="flex items-center justify-between">
-                  <DialogTitle className="text-lg font-semibold">Portfolio</DialogTitle>
-                  <Button variant="ghost" size="sm" onClick={() => setIsModalOpen(false)}>
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-              </DialogHeader>
-              
               <div className="space-y-6 py-4">
                 <div>
                   <Label className="text-sm text-gray-600 mb-2 block">Portfolio</Label>
