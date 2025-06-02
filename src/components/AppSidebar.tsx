@@ -1,17 +1,18 @@
-
-import { Home, Settings, Vote, Eye, Users, Send } from "lucide-react";
+import { Home, Settings, Vote, Eye, Users, Send, User } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const items = [
   { title: "Overview", url: "/app/overview", icon: Home },
-  { title: "Settings", url: "/app/settings", icon: Settings },
-  { title: "Ballot", url: "/app/ballot", icon: Vote },
+  { title: "Ballots", url: "/app/ballot", icon: Vote },
+  { title: "Voters", url: "/app/voter", icon: User },
   { title: "Preview", url: "/app/preview", icon: Eye },
   { title: "Add-ons", url: "/app/addons", icon: Users },
   { title: "Launch", url: "/app/launch", icon: Send },
+    { title: "Settings", url: "/app/settings", icon: Settings },
+
 ];
 
-export function AppSidebar() {
+export function AppSidebar() {                                                                                                                                                                                                                                                                       
   const location = useLocation();
   const currentPath = location.pathname;
 
