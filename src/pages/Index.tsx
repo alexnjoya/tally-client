@@ -10,7 +10,7 @@ const Index = () => {
       <header className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center">
               <Vote className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -21,13 +21,18 @@ const Index = () => {
             </div>
           </div>
           <div className="flex items-center space-x-4">
+            <Link to="/voter-login">
+              <Button variant="ghost" className="text-gray-700 hover:text-blue-600">
+                Voter Login
+              </Button>
+            </Link>
             <Link to="/login">
               <Button variant="ghost" className="text-gray-700 hover:text-blue-600">
-                Sign In
+                Admin Login
               </Button>
             </Link>
             <Link to="/app/dashboard">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                 Get Started
               </Button>
             </Link>
@@ -41,9 +46,9 @@ const Index = () => {
           {/* Main Hero */}
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-3xl"></div>
-            <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-16 shadow-2xl border border-white/20">
+            <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-16 border border-white/20">
               <div className="flex justify-center mb-8">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center">
                   <Vote className="h-10 w-10 text-white" />
                 </div>
               </div>
@@ -62,7 +67,7 @@ const Index = () => {
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
                 <Link to="/app/dashboard">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-12 py-6 text-lg shadow-lg">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-12 py-6 text-lg">
                     Start →
                   </Button>
                 </Link>
@@ -89,7 +94,7 @@ const Index = () => {
 
             {/* Dashboard Preview */}
             <div className="relative max-w-5xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center space-x-3">
                     <div className="flex space-x-2">
@@ -164,7 +169,7 @@ const Index = () => {
                 gradient: "from-orange-500 to-orange-600"
               }
             ].map((feature, index) => (
-              <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-white/20 hover:scale-105">
+              <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl hover:scale-105 transition-all border border-white/20">
                 <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 mx-auto`}>
                   <feature.icon className="h-7 w-7 text-white" />
                 </div>
@@ -184,7 +189,7 @@ const Index = () => {
             </h3>
             
             <div className="grid md:grid-cols-2 gap-12 mt-16">
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
                   <Zap className="h-8 w-8 text-white" />
                 </div>
@@ -194,7 +199,7 @@ const Index = () => {
                 </p>
               </div>
               
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
                   <Globe className="h-8 w-8 text-white" />
                 </div>
@@ -238,7 +243,7 @@ const Index = () => {
                   Join thousands of institutions already using Tally for transparent, secure elections.
                 </p>
                 <Link to="/register">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-12 py-6 text-lg font-semibold shadow-lg">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-12 py-6 text-lg font-semibold">
                     Get Started Free
                   </Button>
                 </Link>

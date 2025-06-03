@@ -22,6 +22,8 @@ import Overview from "./pages/Overview";
 import VoterManagement from "./components/VoterManagement";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import VoterLogin from "./pages/VoterLogin";
+import VoterDashboard from "./pages/VoterDashboard";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/voter-login" element={<VoterLogin />} />
+            <Route path="/voter/dashboard" element={<VoterDashboard />} />
             <Route path="/app" element={<Layout />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="overview" element={<Overview />} />
