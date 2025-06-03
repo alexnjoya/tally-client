@@ -16,28 +16,12 @@ interface Voter {
   voteWeight: number;
 }
 
-const VoterList = () => {
+interface VoterListProps {
+  voters: Voter[];
+}
+
+const VoterList = ({ voters }: VoterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [voters] = useState<Voter[]>([
-    {
-      id: "1",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      voterId: "VID001",
-      voterKey: "VK001ABC",
-      status: "active",
-      voteWeight: 1
-    },
-    {
-      id: "2",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      voterId: "VID002",
-      voterKey: "VK002DEF",
-      status: "pending",
-      voteWeight: 1
-    }
-  ]);
 
   const filteredVoters = voters.filter(voter => 
     voter.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

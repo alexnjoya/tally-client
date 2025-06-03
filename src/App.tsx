@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +19,7 @@ import Index from "./pages/Index";
 import ElectionDetail from "./pages/ElectionDetail";
 import BallotPreview from "./pages/BallotPreview";
 import Overview from "./pages/Overview";
+import VoterManagement from "./components/VoterManagement";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +39,7 @@ const App = () => (
               <Route path="ballot" element={<BallotBuilder />} />
               <Route path="account-verification" element={<AccountVerification />} />
               <Route path="voter-settings" element={<VoterSettings />} />
+              <Route path="voter" element={<VoterManagement />} />
               <Route path="settings" element={<Settings />} />
               <Route path="preview" element={<Preview />} />
               <Route path="addons" element={<Addons />} />
