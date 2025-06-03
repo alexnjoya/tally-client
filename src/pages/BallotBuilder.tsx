@@ -7,34 +7,42 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Upload, X, Image, FileText, Plus, MoreVertical, Trash2, Edit, Eye } from "lucide-react";
+import { ArrowLeft, Upload, X, Image, Plus, MoreVertical, Trash2, Vote } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface BallotQuestion {
+interface Candidate {
+  id: string;
+  name: string;
+  portfolio: string;
+  shortDescription: string;
+  description: string;
+  image: File | null;
+}
+
+interface Ballot {
   id: string;
   title: string;
-  type: 'multiple-choice' | 'single-choice';
-  options: string[];
-  description?: string;
+  description: string;
+  candidates: Candidate[];
+  type: 'single-choice' | 'multiple-choice';
 }
 
 const BallotBuilder = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
-  const [questions, setQuestions] = useState<BallotQuestion[]>([]);
-  const [questionData, setQuestionData] = useState<{
-    title: string;
-    type: 'multiple-choice' | 'single-choice';
-    options: string[];
-    description: string;
-    image: File | null;
-  }>({
+  const [ballots, setBallots] = useState<Ballot[]>([]);
+  const [ballotData, setBallotData] = useState({
     title: "",
-    type: "multiple-choice",
-    options: [""],
     description: "",
-    image: null
+    type: "single-choice" as 'single-choice' | 'multiple-choice',
+    candidates: [] as Candidate[]
+  });
+  const [candidateData, setCandidateData] = useState({
+    name: "",
+    portfolio: "",
+    shortDescription: "",
+    description: "",
+    image: null as File | null
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
   const csvFileRef = useRef<HTMLInputElement>(null);
@@ -42,63 +50,60 @@ const BallotBuilder = () => {
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setQuestionData({...questionData, image: file});
+      setCandidateData({...candidateData, image: file});
     }
   };
 
-  const handleCSVUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      console.log("CSV file uploaded:", file.name);
-      // Process CSV file here
-      setIsImportModalOpen(false);
+  const addCandidate = () => {
+    if (candidateData.name.trim() && candidateData.portfolio.trim()) {
+      const newCandidate: Candidate = {
+        id: Date.now().toString(),
+        ...candidateData
+      };
+      setBallotData({
+        ...ballotData,
+        candidates: [...ballotData.candidates, newCandidate]
+      });
+      setCandidateData({
+        name: "",
+        portfolio: "",
+        shortDescription: "",
+        description: "",
+        image: null
+      });
     }
   };
 
-  const addOption = () => {
-    setQuestionData({
-      ...questionData,
-      options: [...questionData.options, ""]
+  const removeCandidate = (id: string) => {
+    setBallotData({
+      ...ballotData,
+      candidates: ballotData.candidates.filter(c => c.id !== id)
     });
   };
 
-  const updateOption = (index: number, value: string) => {
-    const newOptions = [...questionData.options];
-    newOptions[index] = value;
-    setQuestionData({...questionData, options: newOptions});
+  const handleSaveBallot = () => {
+    if (ballotData.title.trim() && ballotData.candidates.length >= 2) {
+      const newBallot: Ballot = {
+        id: Date.now().toString(),
+        ...ballotData
+      };
+      setBallots([...ballots, newBallot]);
+      setIsModalOpen(false);
+      setBallotData({
+        title: "",
+        description: "",
+        type: "single-choice",
+        candidates: []
+      });
+    }
   };
 
-  const removeOption = (index: number) => {
-    const newOptions = questionData.options.filter((_, i) => i !== index);
-    setQuestionData({...questionData, options: newOptions});
-  };
-
-  const handleSave = () => {
-    const newQuestion: BallotQuestion = {
-      id: Date.now().toString(),
-      title: questionData.title,
-      type: questionData.type,
-      options: questionData.options.filter(opt => opt.trim() !== ""),
-      description: questionData.description
-    };
-    
-    setQuestions([...questions, newQuestion]);
-    setIsModalOpen(false);
-    setQuestionData({
-      title: "",
-      type: "multiple-choice",
-      options: [""],
-      description: "",
-      image: null
-    });
-  };
-
-  const deleteQuestion = (id: string) => {
-    setQuestions(questions.filter(q => q.id !== id));
+  const deleteBallot = (id: string) => {
+    setBallots(ballots.filter(b => b.id !== id));
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
       <div className="flex items-center mb-8">
         <Link to="/app/overview" className="mr-4">
@@ -111,10 +116,12 @@ const BallotBuilder = () => {
       </div>
 
       {/* Ballot Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-black dark:bg-white rounded"></div>
-          <h2 className="text-2xl font-bold text-black dark:text-white">Ballot</h2>
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <Vote className="h-5 w-5 text-white" />
+          </div>
+          <h2 className="text-2xl font-bold text-black dark:text-white">Ballot Builder</h2>
         </div>
         <div className="flex items-center space-x-3">
           <Dialog open={isImportModalOpen} onOpenChange={setIsImportModalOpen}>
@@ -124,47 +131,30 @@ const BallotBuilder = () => {
                 Import
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            <DialogContent className="max-w-2xl">
               <DialogHeader>
-                <DialogTitle className="text-xl font-semibold text-black dark:text-white">Import Ballot Questions</DialogTitle>
+                <DialogTitle className="text-xl font-semibold">Import Ballot Data</DialogTitle>
               </DialogHeader>
-              
               <div className="space-y-6 py-4">
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
                   <h3 className="font-semibold text-black dark:text-white mb-3">CSV Format Requirements</h3>
                   <div className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
-                    <p>Your CSV file should contain the following columns:</p>
+                    <p>Your CSV file should contain these columns:</p>
                     <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li><strong>title</strong> - Question title (required)</li>
-                      <li><strong>type</strong> - "multiple-choice" or "single-choice"</li>
-                      <li><strong>description</strong> - Question description (optional)</li>
-                      <li><strong>option1, option2, option3...</strong> - Answer options</li>
+                      <li><strong>name</strong> - Candidate name (required)</li>
+                      <li><strong>portfolio</strong> - Position running for (required)</li>
+                      <li><strong>shortDescription</strong> - Brief description</li>
+                      <li><strong>description</strong> - Detailed description</li>
                     </ul>
-                    
-                    <div className="mt-4 p-3 bg-white dark:bg-gray-800 rounded border">
-                      <p className="font-medium text-black dark:text-white mb-2">Example CSV content:</p>
-                      <code className="text-xs block whitespace-pre-line text-gray-600 dark:text-gray-400">
-title,type,description,option1,option2,option3{'\n'}
-"Who should be President?","single-choice","Select one candidate","John Doe","Jane Smith","Bob Johnson"{'\n'}
-"Which initiatives do you support?","multiple-choice","Select all that apply","Better Healthcare","Education Reform","Environmental Policy"
-                      </code>
-                    </div>
                   </div>
                 </div>
-
                 <div 
-                  className="border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-8 text-center cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 transition-colors bg-blue-50/50 dark:bg-blue-900/10"
+                  className="border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-xl p-8 text-center cursor-pointer hover:border-blue-400 transition-colors bg-blue-50/50 dark:bg-blue-900/10"
                   onClick={() => csvFileRef.current?.click()}
                 >
-                  <input
-                    ref={csvFileRef}
-                    type="file"
-                    accept=".csv"
-                    onChange={handleCSVUpload}
-                    className="hidden"
-                  />
+                  <input ref={csvFileRef} type="file" accept=".csv" className="hidden" />
                   <Upload className="h-12 w-12 text-blue-500 mx-auto mb-3" />
-                  <p className="text-black dark:text-white font-medium">Click to upload CSV file</p>
+                  <p className="text-black dark:text-white font-medium">Upload CSV File</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Supports CSV files up to 10MB</p>
                 </div>
               </div>
@@ -175,158 +165,178 @@ title,type,description,option1,option2,option3{'\n'}
             <DialogTrigger asChild>
               <Button className="bg-green-500 hover:bg-green-600 text-white">
                 <Plus className="h-4 w-4 mr-2" />
-                Add Question
+                Add Ballot
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle className="text-xl font-semibold text-black dark:text-white">New Question</DialogTitle>
+                <DialogTitle className="text-xl font-semibold">Create New Ballot</DialogTitle>
               </DialogHeader>
               
               <div className="space-y-6 py-4">
-                <div>
-                  <Label className="text-sm font-medium text-black dark:text-white mb-2 block">Question Title</Label>
-                  <Input 
-                    placeholder="Enter your question..."
-                    value={questionData.title}
-                    onChange={(e) => setQuestionData({...questionData, title: e.target.value})}
-                    className="bg-white dark:bg-gray-800 text-black dark:text-white border-gray-300 dark:border-gray-600"
-                  />
-                </div>
-
-                <div>
-                  <Label className="text-sm font-medium text-black dark:text-white mb-2 block">Question Type</Label>
-                  <select 
-                    value={questionData.type}
-                    onChange={(e) => setQuestionData({...questionData, type: e.target.value as 'multiple-choice' | 'single-choice'})}
-                    className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-black dark:text-white"
-                  >
-                    <option value="multiple-choice">Multiple Choice</option>
-                    <option value="single-choice">Single Choice</option>
-                  </select>
-                </div>
-
-                <div>
-                  <Label className="text-sm font-medium text-black dark:text-white mb-2 block">Description (Optional)</Label>
-                  <Textarea 
-                    placeholder="Add additional context or instructions..."
-                    value={questionData.description}
-                    onChange={(e) => setQuestionData({...questionData, description: e.target.value})}
-                    className="min-h-[80px] bg-white dark:bg-gray-800 text-black dark:text-white border-gray-300 dark:border-gray-600"
-                  />
-                </div>
-
-                <div>
-                  <Label className="text-sm font-medium text-black dark:text-white mb-2 block">Answer Options</Label>
-                  <div className="space-y-3">
-                    {questionData.options.map((option, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <div className="flex-1">
-                          <Input
-                            placeholder={`Option ${index + 1}`}
-                            value={option}
-                            onChange={(e) => updateOption(index, e.target.value)}
-                            className="bg-white dark:bg-gray-800 text-black dark:text-white border-gray-300 dark:border-gray-600"
-                          />
-                        </div>
-                        {questionData.options.length > 1 && (
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => removeOption(index)}
-                            className="text-red-600 hover:text-red-700"
-                          >
-                            <X className="h-4 w-4" />
-                          </Button>
-                        )}
-                      </div>
-                    ))}
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={addOption}
-                      className="w-full border-dashed border-gray-300 dark:border-gray-600 text-black dark:text-white"
+                {/* Ballot Info */}
+                <div className="space-y-4">
+                  <div>
+                    <Label className="text-sm font-medium mb-2 block">Ballot Title</Label>
+                    <Input 
+                      placeholder="e.g., Student Council Elections 2024"
+                      value={ballotData.title}
+                      onChange={(e) => setBallotData({...ballotData, title: e.target.value})}
+                      className="bg-white dark:bg-gray-800"
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-sm font-medium mb-2 block">Description</Label>
+                    <Textarea 
+                      placeholder="Brief description of this ballot..."
+                      value={ballotData.description}
+                      onChange={(e) => setBallotData({...ballotData, description: e.target.value})}
+                      className="bg-white dark:bg-gray-800"
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-sm font-medium mb-2 block">Voting Type</Label>
+                    <select 
+                      value={ballotData.type}
+                      onChange={(e) => setBallotData({...ballotData, type: e.target.value as 'single-choice' | 'multiple-choice'})}
+                      className="w-full p-2 border rounded-md bg-white dark:bg-gray-800"
                     >
-                      <Plus className="h-4 w-4 mr-2" />
-                      Add Option
-                    </Button>
+                      <option value="single-choice">Single Choice</option>
+                      <option value="multiple-choice">Multiple Choice</option>
+                    </select>
                   </div>
                 </div>
 
-                <div 
-                  className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center cursor-pointer hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                  {questionData.image ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <Image className="h-6 w-6 text-green-600" />
-                      <span className="text-green-600 font-medium">{questionData.image.name}</span>
+                {/* Add Candidate Section */}
+                <div className="border-t pt-6">
+                  <h3 className="text-lg font-semibold mb-4">Add Candidates</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Candidate Name</Label>
+                      <Input 
+                        placeholder="Full name"
+                        value={candidateData.name}
+                        onChange={(e) => setCandidateData({...candidateData, name: e.target.value})}
+                      />
                     </div>
-                  ) : (
-                    <>
-                      <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                      <p className="text-black dark:text-white">Add attachment (optional)</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Click to browse files</p>
-                    </>
-                  )}
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Portfolio</Label>
+                      <Input 
+                        placeholder="e.g., President, Vice President"
+                        value={candidateData.portfolio}
+                        onChange={(e) => setCandidateData({...candidateData, portfolio: e.target.value})}
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <Label className="text-sm font-medium mb-2 block">Short Description</Label>
+                      <Input 
+                        placeholder="Brief tagline or motto"
+                        value={candidateData.shortDescription}
+                        onChange={(e) => setCandidateData({...candidateData, shortDescription: e.target.value})}
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <Label className="text-sm font-medium mb-2 block">Description</Label>
+                      <Textarea 
+                        placeholder="Detailed candidate information..."
+                        value={candidateData.description}
+                        onChange={(e) => setCandidateData({...candidateData, description: e.target.value})}
+                        className="min-h-[100px]"
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <Label className="text-sm font-medium mb-2 block">Candidate Photo</Label>
+                      <div 
+                        className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-gray-400 transition-colors"
+                        onClick={() => fileInputRef.current?.click()}
+                      >
+                        <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                        {candidateData.image ? (
+                          <div className="flex items-center justify-center space-x-2">
+                            <Image className="h-5 w-5 text-green-600" />
+                            <span className="text-green-600 font-medium">{candidateData.image.name}</span>
+                          </div>
+                        ) : (
+                          <>
+                            <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+                            <p>Upload candidate photo</p>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <Button 
+                    onClick={addCandidate}
+                    disabled={!candidateData.name.trim() || !candidateData.portfolio.trim()}
+                    className="mt-4 bg-blue-500 hover:bg-blue-600"
+                  >
+                    Add Candidate
+                  </Button>
                 </div>
 
-                <div className="flex justify-end space-x-3 pt-4">
+                {/* Current Candidates */}
+                {ballotData.candidates.length > 0 && (
+                  <div className="border-t pt-6">
+                    <h3 className="text-lg font-semibold mb-4">Candidates ({ballotData.candidates.length})</h3>
+                    <div className="space-y-3">
+                      {ballotData.candidates.map((candidate) => (
+                        <div key={candidate.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                          <div>
+                            <div className="font-medium">{candidate.name}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">{candidate.portfolio}</div>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => removeCandidate(candidate.id)}
+                            className="text-red-600"
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex justify-end space-x-3 pt-4 border-t">
+                  <Button variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
                   <Button 
-                    variant="outline" 
-                    onClick={() => setIsModalOpen(false)}
-                    className="text-black dark:text-white"
+                    onClick={handleSaveBallot}
+                    disabled={!ballotData.title.trim() || ballotData.candidates.length < 2}
+                    className="bg-green-500 hover:bg-green-600"
                   >
-                    Cancel
-                  </Button>
-                  <Button 
-                    className="bg-green-500 hover:bg-green-600 text-white"
-                    onClick={handleSave}
-                    disabled={!questionData.title.trim() || questionData.options.filter(opt => opt.trim()).length < 2}
-                  >
-                    Save Question
+                    Create Ballot
                   </Button>
                 </div>
               </div>
             </DialogContent>
           </Dialog>
-          
-          <Button variant="outline" size="sm">
-            <MoreVertical className="h-4 w-4" />
-          </Button>
         </div>
       </div>
 
-      {/* Questions List */}
-      {questions.length > 0 ? (
-        <div className="space-y-6">
-          {questions.map((question) => (
-            <Card key={question.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+      {/* Ballots Display */}
+      {ballots.length > 0 ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {ballots.map((ballot) => (
+            <Card key={ballot.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <CardTitle className="text-lg font-semibold text-black dark:text-white mb-2">
-                      {question.title}
+                    <CardTitle className="text-xl font-bold text-black dark:text-white mb-2">
+                      {ballot.title}
                     </CardTitle>
-                    <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
-                      {question.type === 'multiple-choice' ? 'Multiple Choice' : 'Single Choice'}
+                    <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+                      {ballot.type === 'single-choice' ? 'Single Choice' : 'Multiple Choice'}
                     </Badge>
-                    {question.description && (
-                      <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">{question.description}</p>
+                    {ballot.description && (
+                      <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">{ballot.description}</p>
                     )}
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => deleteQuestion(question.id)}
+                    onClick={() => deleteBallot(ballot.id)}
                     className="text-red-600 hover:text-red-700"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -334,43 +344,37 @@ title,type,description,option1,option2,option3{'\n'}
                 </div>
               </CardHeader>
               <CardContent>
-                <Tabs defaultValue="options" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="options">Options</TabsTrigger>
-                    <TabsTrigger value="details">Details</TabsTrigger>
-                    <TabsTrigger value="attachments">Attachments</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="options" className="mt-4">
-                    <div className="space-y-3">
-                      {question.options.map((option, index) => (
-                        <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                          <div className="w-4 h-4 border-2 border-gray-300 dark:border-gray-600 rounded-full"></div>
-                          <span className="text-black dark:text-white">{option}</span>
-                        </div>
-                      ))}
-                      <Button variant="outline" size="sm" className="text-green-600 hover:text-green-700">
-                        <Plus className="h-4 w-4 mr-1" />
-                        Add Option
-                      </Button>
+                <div className="space-y-4">
+                  <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                    Candidates ({ballot.candidates.length})
+                  </div>
+                  {ballot.candidates.map((candidate) => (
+                    <div key={candidate.id} className="flex items-start space-x-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                        {candidate.name.charAt(0)}
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold text-black dark:text-white">{candidate.name}</div>
+                        <div className="text-sm text-blue-600 dark:text-blue-400 font-medium">{candidate.portfolio}</div>
+                        {candidate.shortDescription && (
+                          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">{candidate.shortDescription}</div>
+                        )}
+                      </div>
+                      <div className="w-6 h-6 border-2 border-gray-300 dark:border-gray-600 rounded-full"></div>
                     </div>
-                  </TabsContent>
-                  <TabsContent value="details" className="mt-4">
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      Click the "Add Option" button below to add an option to this question
-                    </p>
-                  </TabsContent>
-                  <TabsContent value="attachments" className="mt-4">
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">No attachments added</p>
-                  </TabsContent>
-                </Tabs>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
       ) : (
-        <div className="text-center py-16">
-          <h2 className="text-4xl font-bold text-black dark:text-white mb-4">Build Your Ballot</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-12">Get started by adding your first question.</p>
+        <div className="text-center py-20">
+          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Vote className="h-10 w-10 text-white" />
+          </div>
+          <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Create Your First Ballot</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">Start building professional voting ballots with candidates and portfolios.</p>
         </div>
       )}
     </div>
