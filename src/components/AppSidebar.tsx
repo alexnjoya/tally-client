@@ -1,3 +1,4 @@
+
 import { Home, Settings, Vote, Eye, Users, Send, User } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -8,8 +9,7 @@ const items = [
   { title: "Preview", url: "/app/preview", icon: Eye },
   { title: "Add-ons", url: "/app/addons", icon: Users },
   { title: "Launch", url: "/app/launch", icon: Send },
-    { title: "Settings", url: "/app/settings", icon: Settings },
-
+  { title: "Settings", url: "/app/settings", icon: Settings },
 ];
 
 export function AppSidebar() {                                                                                                                                                                                                                                                                       
@@ -19,7 +19,7 @@ export function AppSidebar() {
   const isActive = (path: string) => currentPath === path;
 
   return (
-    <div className="w-16 bg-black dark:bg-[#0f0f0f] flex flex-col items-center py-4 space-y-6">
+    <div className="w-16 bg-gray-900 dark:bg-gray-950 flex flex-col items-center py-6 space-y-6">
       <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-purple-600 rounded-md flex items-center justify-center">
         <div className="w-3 h-3 bg-white rounded opacity-80"></div>
       </div>
@@ -39,8 +39,7 @@ export function AppSidebar() {
             <item.icon className="h-4 w-4" />
             <span className="text-[8px] font-medium leading-none">{item.title}</span>
             
-            {/* Tooltip for better UX */}
-            <div className="absolute left-full ml-3 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+            <div className="absolute left-full ml-3 px-2 py-1 bg-gray-900 dark:bg-gray-950 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
               {item.title}
             </div>
           </NavLink>

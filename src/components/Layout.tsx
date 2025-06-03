@@ -31,10 +31,10 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen flex w-full bg-gray-50 dark:bg-[#1a1a1a]">
+    <div className="min-h-screen flex w-full bg-gray-50 dark:bg-gray-900">
       <AppSidebar />
       <div className="flex-1 flex flex-col">
-        <header className="h-16 bg-white dark:bg-[#2a2a2a] border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 shadow-sm">
+        <header className="h-16 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 shadow-sm">
           <div className="flex items-center gap-4">
             <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Dashboard</h1>
           </div>
@@ -50,7 +50,7 @@ const Layout = () => {
             <ProfileDropdown />
           </div>
         </header>
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 bg-gray-50 dark:bg-gray-900">
           <Outlet />
         </main>
       </div>

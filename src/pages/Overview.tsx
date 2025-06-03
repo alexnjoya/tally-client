@@ -4,9 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Copy, ExternalLink, Eye, Users, Vote, Calendar, Clock } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Overview = () => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // Mock election data
   const election = {
@@ -30,6 +32,18 @@ const Overview = () => {
     setTimeout(() => setCopiedField(null), 2000);
   };
 
+  const handlePreviewElection = () => {
+    navigate("/app/preview");
+  };
+
+  const handleManageVoters = () => {
+    navigate("/app/voter");
+  };
+
+  const handleEditBallot = () => {
+    navigate("/app/ballot");
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -40,7 +54,7 @@ const Overview = () => {
         </div>
         <Badge 
           variant={election.status === 'active' ? 'default' : 'secondary'}
-          className={election.status === 'active' ? 'bg-green-100 text-green-700' : ''}
+          className={election.status === 'active' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {election.status.charAt(0).toUpperCase() + election.status.slice(1)}
         </Badge>
@@ -48,7 +62,7 @@ const Overview = () => {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800">
           <CardContent className="p-4">
             <div className="flex items-center space-x-3">
               <Users className="h-6 w-6 text-orange-600" />
@@ -60,7 +74,7 @@ const Overview = () => {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-white dark:bg-gray-800">
           <CardContent className="p-4">
             <div className="flex items-center space-x-3">
               <Vote className="h-6 w-6 text-pink-600" />
@@ -72,7 +86,7 @@ const Overview = () => {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800">
           <CardContent className="p-4">
             <div className="flex items-center space-x-3">
               <Calendar className="h-6 w-6 text-purple-600" />
@@ -85,7 +99,7 @@ const Overview = () => {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800">
           <CardContent className="p-4">
             <div className="flex items-center space-x-3">
               <Clock className="h-6 w-6 text-blue-600" />
@@ -100,9 +114,9 @@ const Overview = () => {
       </div>
 
       {/* Election URLs */}
-      <Card>
+      <Card className="bg-white dark:bg-gray-800">
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+          <CardTitle className="flex items-center space-x-2 text-gray-900 dark:text-white">
             <ExternalLink className="h-5 w-5" />
             <span>Election URLs</span>
           </CardTitle>
@@ -177,7 +191,7 @@ const Overview = () => {
           {/* Organization Subdomain */}
           <div>
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Organization Subdomain</label>
-            <button className="block text-blue-600 hover:text-blue-700 text-sm mt-1">
+            <button className="block text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm mt-1">
               Click here to set up your organization's subdomain
             </button>
           </div>
@@ -185,21 +199,33 @@ const Overview = () => {
       </Card>
 
       {/* Quick Actions */}
-      <Card>
+      <Card className="bg-white dark:bg-gray-800">
         <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
+          <CardTitle className="text-gray-900 dark:text-white">Quick Actions</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-3">
-            <Button variant="outline" className="flex items-center space-x-2">
+            <Button 
+              variant="outline" 
+              className="flex items-center space-x-2"
+              onClick={handlePreviewElection}
+            >
               <Eye className="h-4 w-4" />
               <span>Preview Election</span>
             </Button>
-            <Button variant="outline" className="flex items-center space-x-2">
+            <Button 
+              variant="outline" 
+              className="flex items-center space-x-2"
+              onClick={handleManageVoters}
+            >
               <Users className="h-4 w-4" />
               <span>Manage Voters</span>
             </Button>
-            <Button variant="outline" className="flex items-center space-x-2">
+            <Button 
+              variant="outline" 
+              className="flex items-center space-x-2"
+              onClick={handleEditBallot}
+            >
               <Vote className="h-4 w-4" />
               <span>Edit Ballot</span>
             </Button>
