@@ -20,9 +20,12 @@ export function AppSidebar() {
 
   return (
     <div className="w-16 bg-gray-900 dark:bg-gray-950 flex flex-col items-center py-6 space-y-6">
-      <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-purple-600 rounded-md flex items-center justify-center">
-        <div className="w-3 h-3 bg-white rounded opacity-80"></div>
-      </div>
+      <NavLink 
+        to="/app/dashboard"
+        className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-md flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+      >
+        <div className="w-4 h-4 bg-white rounded opacity-80"></div>
+      </NavLink>
       
       <div className="flex flex-col space-y-4 px-2">
         {items.map((item) => (

@@ -20,6 +20,8 @@ import ElectionDetail from "./pages/ElectionDetail";
 import BallotPreview from "./pages/BallotPreview";
 import Overview from "./pages/Overview";
 import VoterManagement from "./components/VoterManagement";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ const App = () => (
         <SidebarProvider>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/app" element={<Layout />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="overview" element={<Overview />} />
