@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Upload, X, Image, FileText, Plus, MoreVertical, Trash2 } from "lucide-react";
+import { ArrowLeft, Upload, X, Image, FileText, Plus, MoreVertical, Trash2, Edit, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface BallotQuestion {
@@ -23,12 +23,18 @@ const BallotBuilder = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [questions, setQuestions] = useState<BallotQuestion[]>([]);
-  const [questionData, setQuestionData] = useState({
+  const [questionData, setQuestionData] = useState<{
+    title: string;
+    type: 'multiple-choice' | 'single-choice';
+    options: string[];
+    description: string;
+    image: File | null;
+  }>({
     title: "",
-    type: "multiple-choice" as const,
+    type: "multiple-choice",
     options: [""],
     description: "",
-    image: null as File | null
+    image: null
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
   const csvFileRef = useRef<HTMLInputElement>(null);
