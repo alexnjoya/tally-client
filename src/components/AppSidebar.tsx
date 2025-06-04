@@ -1,18 +1,6 @@
 
 import { Home, Settings, Vote, Eye, Users, Send, User } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarHeader,
-  useSidebar,
-} from "@/components/ui/sidebar";
 
 const items = [
   { title: "Overview", url: "/app/overview", icon: Home },
@@ -24,61 +12,42 @@ const items = [
   { title: "Settings", url: "/app/settings", icon: Settings },
 ];
 
-export function AppSidebar() {
+export function AppSidebar() {                                                                                                                                                                                                                                                                       
   const location = useLocation();
   const currentPath = location.pathname;
-  const { state } = useSidebar();
 
   const isActive = (path: string) => currentPath === path;
 
   return (
-    <Sidebar className="bg-gray-900 dark:bg-gray-950 text-white" collapsible="icon">
-      <SidebarHeader className="p-4">
-        <NavLink 
-          to="/app/dashboard"
-          className="flex items-center space-x-2"
-        >
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-md flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded opacity-80"></div>
-          </div>
-          {state === "expanded" && (
-            <span className="text-lg font-bold text-white">Tally</span>
-          )}
-        </NavLink>
-      </SidebarHeader>
+    <div className="w-16 bg-gray-900 dark:bg-gray-950 flex flex-col items-center py-6 space-y-6">
+      <NavLink 
+        to="/app/dashboard"
+        className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-md flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+      >
+        <div className="w-4 h-4 bg-white rounded opacity-80"></div>
+      </NavLink>
       
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider">
-            {state === "expanded" ? "Navigation" : ""}
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu className="space-y-2">
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    className={`${
-                      isActive(item.url)
-                        ? "bg-blue-600 text-white"
-                        : "text-gray-400 hover:text-white hover:bg-gray-800 dark:hover:bg-gray-700"
-                    } transition-colors`}
-                    tooltip={state === "collapsed" ? item.title : undefined}
-                  >
-                    <NavLink to={item.url} className="flex items-center space-x-3 w-full">
-                      <item.icon className="h-4 w-4 flex-shrink-0" />
-                      {state === "expanded" && (
-                        <span className="text-sm font-medium">{item.title}</span>
-                      )}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+      <div className="flex flex-col space-y-4 px-2">
+        {items.map((item) => (
+          <NavLink
+            key={item.title}
+            to={item.url}
+            className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors group relative ${
+              isActive(item.url)
+                ? "bg-blue-600 text-white"
+                : "text-gray-400 hover:text-white hover:bg-gray-800 dark:hover:bg-gray-700"
+            }`}
+            title={item.title}
+          >
+            <item.icon className="h-4 w-4" />
+            <span className="text-[8px] font-medium leading-none">{item.title}</span>
+            
+            <div className="absolute left-full ml-3 px-2 py-1 bg-gray-900 dark:bg-gray-950 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+              {item.title}
+            </div>
+          </NavLink>
+        ))}
+      </div>
+    </div>
   );
 }
