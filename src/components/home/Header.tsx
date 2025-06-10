@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Vote, Menu, X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,12 +29,15 @@ const Header = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-gray-900 px-4 py-2 transition-colors font-medium">
+          <Link to="/login" ><button className="text-gray-600 hover:text-gray-900 px-4 py-2 transition-colors font-medium">
               Sign In
             </button>
+            </Link>
+            <Link to="/Register">
             <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg font-medium transition-colors">
               Sign Up
             </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
