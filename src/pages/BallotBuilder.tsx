@@ -110,7 +110,6 @@ const BallotBuilder = () => {
           <ArrowLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
         </Link>
         <div className="flex-1">
-          <h1 className="text-3xl font-bold text-black dark:text-white">CSS DEPARTMENT</h1>
           <Badge className="bg-blue-100 text-blue-700 mt-2">Building</Badge>
         </div>
       </div>

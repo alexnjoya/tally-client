@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const VoterSettings = () => {
   const [loginInstructions, setLoginInstructions] = useState("");
   const [voteConfirmation, setVoteConfirmation] = useState("");
-  const [afterElection, setAfterElection] = useState("");
+  const [afterElection, setAfterElection] = useState("");5
 
   const steps = [
     { number: "✓", title: "Business structure", status: "completed" },
