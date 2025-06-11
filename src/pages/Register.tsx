@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +16,9 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+ 
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,6 +27,7 @@ const Register = () => {
     // Simulate registration process
     setTimeout(() => {
       setIsLoading(false);
+      navigate("/app/dashboard");
       console.log("Registration successful!");
     }, 1000);
   };
