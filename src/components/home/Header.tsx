@@ -94,24 +94,28 @@ const Header = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
-               <Link to="/Login">
-            <motion.button 
-              className="text-gray-600 hover:text-blue-600 px-8 lg:px-4 py-2 transition-all duration-200 font-medium text-sm lg:text-base rounded-lg hover:bg-blue-50 hover:px-10" 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Sign In
-            </motion.button>
-            </Link>
-            <Link to="/Register">
-            <motion.button 
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-3xl font-medium transition-all duration-200 shadow-blue-100 hover:shadow-blue-200 text-sm lg:text-base"
-              whileHover={{ scale: 1.05, y: -1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Sign Up
-            </motion.button>
-            </Link>
+              <Link to="/Login">
+              <motion.button 
+                className="block w-full text-gray-600 hover:text-blue-600 py-2.5 sm:py-3 transition-colors font-medium text-left text-sm sm:text-base rounded-lg hover:bg-blue-50 px-3"
+                whileHover={{ x: 4 }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign In
+              </motion.button>
+              </Link>
+              <Link to="/Register">
+              <motion.button 
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 shadow-lg shadow-blue-100 text-sm sm:text-base"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign Up
+              </motion.button>
+              </Link>
+
+              {/* Mobile Menu Links */}
+              
               {/* Mobile Menu Footer */}
               <div className="pt-3 sm:pt-4 border-t border-gray-100 mt-4">
                 <p className="text-xs text-gray-500 text-center">
