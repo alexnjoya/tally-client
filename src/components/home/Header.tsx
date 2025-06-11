@@ -33,9 +33,6 @@ const Header = () => {
               <h1 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 Tally
               </h1>
-              <p className="hidden sm:block text-xs text-gray-500 -mt-0.5">
-                Secure Voting
-              </p>
             </div>
           </motion.div>
 
@@ -43,7 +40,7 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
             <Link to="/Login">
             <motion.button 
-              className="text-gray-600 hover:text-blue-600 px-3 lg:px-4 py-2 transition-all duration-200 font-medium text-sm lg:text-base rounded-lg hover:bg-blue-50"
+              className="text-gray-600 hover:text-blue-600 px-8 lg:px-4 py-2 transition-all duration-200 font-medium text-sm lg:text-base rounded-lg hover:bg-blue-50 hover:px-10" 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -52,7 +49,7 @@ const Header = () => {
             </Link>
             <Link to="/Register">
             <motion.button 
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-lg font-medium transition-all duration-200 shadow-lg shadow-blue-100 hover:shadow-blue-200 text-sm lg:text-base"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-3xl font-medium transition-all duration-200 shadow-blue-100 hover:shadow-blue-200 text-sm lg:text-base"
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
             >
