@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Vote, Clock, CheckCircle, BarChart3, ExternalLink, Users, Calendar, Shield, Zap, TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const VoterDashboard = () => {
-  const navigate = useNavigate();
   const [elections] = useState([
     {
       id: 1,
@@ -47,28 +42,28 @@ const VoterDashboard = () => {
   ]);
 
   const handleLogout = () => {
-    navigate("/voter-login");
+    alert("Logout clicked");
   };
 
-  const handleVote = (electionId: number) => {
-    navigate(`/ballot/${electionId}`);
+  const handleVote = (electionId) => {
+    alert(`Vote clicked for election ${electionId}`);
   };
 
-  const handleViewAnalytics = (electionId: number) => {
-    navigate(`/analytics/${electionId}`);
+  const handleViewAnalytics = (electionId) => {
+    alert(`Analytics clicked for election ${electionId}`);
   };
 
-  const getStatusBadge = (status: string, hasVoted: boolean) => {
+  const getStatusBadge = (status, hasVoted) => {
     if (hasVoted && status === "active") {
-      return <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 font-medium">✓ Voted</Badge>;
+      return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">✓ Voted</span>;
     }
     switch (status) {
       case "active":
-        return <Badge className="bg-blue-100 text-blue-800 border-blue-200 font-medium animate-pulse">● Live</Badge>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200 animate-pulse">● Live</span>;
       case "upcoming":
-        return <Badge className="bg-amber-100 text-amber-800 border-amber-200 font-medium">⏳ Upcoming</Badge>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">⏳ Upcoming</span>;
       default:
-        return <Badge className="bg-gray-100 text-gray-800 border-gray-200 font-medium">Closed</Badge>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">Closed</span>;
     }
   };
 
@@ -77,9 +72,9 @@ const VoterDashboard = () => {
   const upcomingElections = elections.filter(e => e.status === "upcoming").length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       {/* Enhanced Header */}
-      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 px-4 sm:px-6 lg:px-8 py-4 sticky top-0 z-50">
+      <header className="w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 px-4 sm:px-6 lg:px-8 xl:px-12 py-4 sticky top-0 z-50">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center space-x-3 sm:space-x-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
@@ -95,13 +90,16 @@ const VoterDashboard = () => {
               </p>
             </div>
           </div>
-          <Button variant="outline" onClick={handleLogout} className="hover:bg-red-50 hover:border-red-200 hover:text-red-600 text-sm">
+          <button 
+            onClick={handleLogout} 
+            className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-red-50 hover:border-red-200 hover:text-red-600 text-sm transition-colors"
+          >
             Logout
-          </Button>
+          </button>
         </div>
       </header>
 
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
         {/* Welcome Section */}
         <div className="mb-8 sm:mb-12 text-center">
           <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -113,9 +111,9 @@ const VoterDashboard = () => {
         </div>
 
         {/* Enhanced Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 max-w-7xl mx-auto">
-          <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border-blue-200 dark:border-blue-700/50 hover:shadow-lg transition-all duration-300">
-            <CardContent className="p-6 sm:p-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 w-full">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border border-blue-200 dark:border-blue-700/50 hover:shadow-lg transition-all duration-300 rounded-xl">
+            <div className="p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">Active Elections</p>
@@ -126,11 +124,11 @@ const VoterDashboard = () => {
                   <Vote className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 border-emerald-200 dark:border-emerald-700/50 hover:shadow-lg transition-all duration-300">
-            <CardContent className="p-6 sm:p-8">
+          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 border border-emerald-200 dark:border-emerald-700/50 hover:shadow-lg transition-all duration-300 rounded-xl">
+            <div className="p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-2">Elections Participated</p>
@@ -141,11 +139,11 @@ const VoterDashboard = () => {
                   <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-amber-200 dark:border-amber-700/50 hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
-            <CardContent className="p-6 sm:p-8">
+          <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border border-amber-200 dark:border-amber-700/50 hover:shadow-lg transition-all duration-300 rounded-xl sm:col-span-2 lg:col-span-1">
+            <div className="p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-amber-600 dark:text-amber-400 mb-2">Upcoming Elections</p>
@@ -156,12 +154,12 @@ const VoterDashboard = () => {
                   <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         {/* Elections Grid */}
-        <div className="space-y-6 sm:space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-6 sm:space-y-8 w-full">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Available Elections</h3>
             <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -170,24 +168,22 @@ const VoterDashboard = () => {
             </div>
           </div>
           
-          <div className="grid gap-4 sm:gap-6">
+          <div className="grid gap-4 sm:gap-6 w-full">
             {elections.map((election) => (
-              <Card key={election.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-                <CardHeader className="pb-4">
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div key={election.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl">
+                <div className="p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2">
-                        <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                        <h4 className="text-lg sm:text-xl text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors font-bold">
                           {election.title}
-                        </CardTitle>
+                        </h4>
                         {getStatusBadge(election.status, election.hasVoted)}
                       </div>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{election.description}</p>
                     </div>
                   </div>
-                </CardHeader>
-                
-                <CardContent className="pt-0">
+                  
                   {/* Election Details */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -224,63 +220,54 @@ const VoterDashboard = () => {
                   <div className="flex flex-wrap gap-3">
                     {election.status === "active" && (
                       <>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
+                        <button 
                           onClick={() => handleViewAnalytics(election.id)}
-                          className="hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600"
+                          className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 text-sm transition-colors flex items-center gap-2"
                         >
-                          <TrendingUp className="h-4 w-4 mr-2" />
+                          <TrendingUp className="h-4 w-4" />
                           Analytics
-                        </Button>
+                        </button>
                         
                         {election.blockchainHash && (
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            className="hover:bg-purple-50 hover:border-purple-200 hover:text-purple-600"
-                          >
-                            <ExternalLink className="h-4 w-4 mr-2" />
+                          <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-purple-50 hover:border-purple-200 hover:text-purple-600 text-sm transition-colors flex items-center gap-2">
+                            <ExternalLink className="h-4 w-4" />
                             Blockchain
-                          </Button>
+                          </button>
                         )}
                         
                         {!election.hasVoted && (
-                          <Button 
-                            size="sm" 
+                          <button 
                             onClick={() => handleVote(election.id)}
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                            className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg text-sm flex items-center gap-2"
                           >
-                            <Vote className="h-4 w-4 mr-2" />
+                            <Vote className="h-4 w-4" />
                             Cast Your Vote
-                          </Button>
+                          </button>
                         )}
                         
                         {election.hasVoted && (
-                          <Button 
-                            size="sm" 
-                            variant="outline"
-                            className="bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100 cursor-default"
+                          <button 
+                            className="px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 cursor-default rounded-lg text-sm flex items-center gap-2"
                             disabled
                           >
-                            <CheckCircle className="h-4 w-4 mr-2" />
+                            <CheckCircle className="h-4 w-4" />
                             Vote Recorded
-                          </Button>
+                          </button>
                         )}
                       </>
                     )}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Enhanced Voting History */}
-        <div className="mt-12 sm:mt-16 max-w-7xl mx-auto">
+        <div className="mt-12 sm:mt-16 w-full">
           <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8">Recent Activity</h3>
-          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg">
-            <CardContent className="p-6 sm:p-8">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg rounded-xl">
+            <div className="p-6 sm:p-8">
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-700/50">
                   <div className="w-3 h-3 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -308,8 +295,8 @@ const VoterDashboard = () => {
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </div>

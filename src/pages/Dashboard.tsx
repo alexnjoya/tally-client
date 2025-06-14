@@ -95,7 +95,7 @@ const Dashboard = () => {
             <Card 
               key={election.id} 
               className="hover:shadow-md transition-shadow cursor-pointer bg-white dark:bg-[#2a2a2a] border-gray-200 dark:border-gray-700" 
-              onClick={() => navigate(`/app/election/${election.id}`)}
+              onClick={() => navigate(`/app/overview`)}
             >
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
