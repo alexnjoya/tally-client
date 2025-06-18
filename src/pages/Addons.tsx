@@ -32,7 +32,7 @@ const Addons = () => {
       name: "Multi-Language Support",
       description: "Support for multiple languages to increase accessibility",
       icon: Globe,
-      price: "$9.99/month",
+      price: "GHS9.99/month",
       installed: false,
       popular: false,
       features: ["20+ languages", "RTL support", "Auto-translation", "Custom translations"]
@@ -42,7 +42,7 @@ const Addons = () => {
       name: "SMS Notifications",
       description: "Send voting reminders and updates via SMS",
       icon: Smartphone,
-      price: "$19.99/month",
+      price: "GHS19.99/month",
       installed: true,
       popular: false,
       features: ["SMS reminders", "Vote confirmations", "Result notifications", "Bulk messaging"]
@@ -52,7 +52,7 @@ const Addons = () => {
       name: "Email Campaigns",
       description: "Automated email campaigns for voter engagement",
       icon: Mail,
-      price: "$14.99/month",
+      price: "GHS14.99/month",
       installed: false,
       popular: true,
       features: ["Email templates", "Automated campaigns", "Delivery tracking", "Custom branding"]
@@ -62,7 +62,7 @@ const Addons = () => {
       name: "Enhanced Security",
       description: "Additional security features including biometric verification",
       icon: Shield,
-      price: "$29.99/month",
+      price: "GHS29.99/month",
       installed: false,
       popular: true,
       features: ["Biometric auth", "IP restrictions", "Audit logs", "Advanced encryption"]
@@ -72,7 +72,7 @@ const Addons = () => {
       name: "Voter Registration",
       description: "Streamlined voter registration and eligibility verification",
       icon: Users,
-      price: "$12.99/month",
+      price: "GHS12.99/month",
       installed: true,
       popular: false,
       features: ["Online registration", "ID verification", "Eligibility checks", "Bulk import"]
@@ -82,7 +82,7 @@ const Addons = () => {
       name: "Compliance Reports",
       description: "Generate compliance and audit reports for institutional requirements",
       icon: FileText,
-      price: "$24.99/month",
+      price: "GHS24.99/month",
       installed: false,
       popular: false,
       features: ["Audit trails", "Compliance reports", "Data export", "Legal templates"]
@@ -92,7 +92,7 @@ const Addons = () => {
       name: "Scheduled Elections",
       description: "Schedule and automate recurring elections",
       icon: Clock,
-      price: "$8.99/month",
+      price: "GHS8.99/month",
       installed: false,
       popular: false,
       features: ["Auto-scheduling", "Recurring elections", "Calendar integration", "Automated reminders"]
