@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -93,52 +92,52 @@ const VoterManagement = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Voter Management</h1>
-          <p className="text-gray-600 dark:text-gray-300">Manage voters for your election</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+        <div className="flex-1">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Voter Management</h1>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage voters for your election</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           <Dialog open={isImportOpen} onOpenChange={setIsImportOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline" className="flex items-center space-x-2">
-                <Upload className="h-4 w-4" />
+              <Button variant="outline" className="flex items-center justify-center space-x-2 w-full sm:w-auto text-xs sm:text-sm">
+                <Upload className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>Import Voters</span>
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl w-[95vw] sm:w-auto">
               <DialogHeader>
-                <DialogTitle className="text-xl font-semibold">Import Voters</DialogTitle>
+                <DialogTitle className="text-lg sm:text-xl font-semibold">Import Voters</DialogTitle>
               </DialogHeader>
-              <div className="space-y-4">
-                <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center">
-                  <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 sm:p-8 text-center">
+                  <Upload className="h-8 w-8 sm:h-12 sm:w-12 text-gray-400 mx-auto mb-2 sm:mb-4" />
+                  <p className="text-sm sm:text-lg font-medium text-gray-900 dark:text-white mb-1 sm:mb-2">
                     Drop your CSV file here or click to browse
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2 sm:mb-4">
                     Maximum file size: 10MB
                   </p>
-                  <Button>Choose File</Button>
+                  <Button className="text-xs sm:text-sm">Choose File</Button>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">CSV Format Requirements:</h4>
-                  <p className="text-sm text-blue-800 dark:text-blue-200 mb-2">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-3 sm:p-4 rounded-lg">
+                  <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-1 sm:mb-2 text-sm sm:text-base">CSV Format Requirements:</h4>
+                  <p className="text-xs sm:text-sm text-blue-800 dark:text-blue-200 mb-1 sm:mb-2">
                     Your CSV file should include the following columns:
                   </p>
-                  <ul className="text-sm text-blue-800 dark:text-blue-200 list-disc list-inside space-y-1">
+                  <ul className="text-xs sm:text-sm text-blue-800 dark:text-blue-200 list-disc list-inside space-y-0.5 sm:space-y-1">
                     <li><strong>name</strong> - Voter's full name</li>
                     <li><strong>email</strong> - Voter's email address</li>
                     <li><strong>voter_id</strong> - Unique voter ID (optional, will be generated if empty)</li>
                     <li><strong>voter_key</strong> - Unique voter key (optional, will be generated if empty)</li>
                   </ul>
                 </div>
-                <div className="flex justify-end gap-2">
-                  <Button variant="outline" onClick={() => setIsImportOpen(false)}>
+                <div className="flex flex-col sm:flex-row justify-end gap-2">
+                  <Button variant="outline" onClick={() => setIsImportOpen(false)} className="text-xs sm:text-sm">
                     Cancel
                   </Button>
-                  <Button onClick={handleImportVoters}>
+                  <Button onClick={handleImportVoters} className="text-xs sm:text-sm">
                     Import Voters
                   </Button>
                 </div>
@@ -148,15 +147,15 @@ const VoterManagement = () => {
 
           <Dialog open={isAddVoterOpen} onOpenChange={setIsAddVoterOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                <Plus className="h-4 w-4 mr-2" />
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto text-xs sm:text-sm">
+                <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                 Add Voter
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl w-[95vw] sm:w-auto">
               <DialogHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <DialogTitle className="text-xl font-semibold text-gray-900 dark:text-white">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <DialogTitle className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
                     Add Voter
                   </DialogTitle>
                   <Button 
@@ -170,22 +169,22 @@ const VoterManagement = () => {
                 </div>
               </DialogHeader>
               
-              <div className="space-y-6 py-4">
+              <div className="space-y-4 sm:space-y-6 py-2 sm:py-4">
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium text-gray-900 dark:text-white">
+                  <Label className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">
                     Name *
                   </Label>
                   <Input 
                     placeholder="Voter's Name"
                     value={voterData.name}
                     onChange={(e) => setVoterData({...voterData, name: e.target.value})}
-                    className="w-full"
+                    className="w-full text-xs sm:text-sm"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
+                    <Label className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
                       Voter ID *
                       <HelpCircle className="h-3 w-3 text-gray-400" />
                     </Label>
@@ -194,22 +193,22 @@ const VoterManagement = () => {
                         placeholder="Voter ID"
                         value={voterData.voterId}
                         onChange={(e) => setVoterData({...voterData, voterId: e.target.value})}
-                        className="rounded-r-none"
+                        className="rounded-r-none text-xs sm:text-sm"
                       />
                       <Button 
                         type="button"
                         variant="outline"
                         size="sm"
                         onClick={generateVoterId}
-                        className="rounded-l-none border-l-0 px-3 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/40"
+                        className="rounded-l-none border-l-0 px-2 sm:px-3 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/40"
                       >
-                        <Zap className="h-4 w-4 text-blue-600" />
+                        <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" />
                       </Button>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
+                    <Label className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
                       Voter Key *
                       <HelpCircle className="h-3 w-3 text-gray-400" />
                     </Label>
@@ -218,23 +217,23 @@ const VoterManagement = () => {
                         placeholder="Voter Key"
                         value={voterData.voterKey}
                         onChange={(e) => setVoterData({...voterData, voterKey: e.target.value})}
-                        className="rounded-r-none"
+                        className="rounded-r-none text-xs sm:text-sm"
                       />
                       <Button 
                         type="button"
                         variant="outline"
                         size="sm"
                         onClick={generateVoterKey}
-                        className="rounded-l-none border-l-0 px-3 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/40"
+                        className="rounded-l-none border-l-0 px-2 sm:px-3 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/40"
                       >
-                        <Zap className="h-4 w-4 text-blue-600" />
+                        <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" />
                       </Button>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
+                  <Label className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
                     Email Address *
                     <HelpCircle className="h-3 w-3 text-gray-400" />
                   </Label>
@@ -243,16 +242,16 @@ const VoterManagement = () => {
                     placeholder="voter@example.com"
                     value={voterData.email}
                     onChange={(e) => setVoterData({...voterData, email: e.target.value})}
-                    className="w-full"
+                    className="w-full text-xs sm:text-sm"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
+                  <Label className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
                     Vote Weight
                     <HelpCircle className="h-3 w-3 text-gray-400" />
                   </Label>
-                  <p className="text-sm text-blue-600 dark:text-blue-400 mb-2">
+                  <p className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 mb-2">
                     Weighted voting is disabled in the <span className="underline cursor-pointer">election settings</span>
                   </p>
                   <Input 
@@ -261,19 +260,20 @@ const VoterManagement = () => {
                     value={voterData.voteWeight}
                     onChange={(e) => setVoterData({...voterData, voteWeight: e.target.value})}
                     disabled
-                    className="w-20"
+                    className="w-16 sm:w-20 text-xs sm:text-sm"
                   />
                 </div>
 
-                <div className="flex justify-end gap-3 pt-4 border-t">
+                <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 pt-3 sm:pt-4 border-t">
                   <Button 
                     variant="outline"
                     onClick={() => setIsAddVoterOpen(false)}
+                    className="text-xs sm:text-sm"
                   >
                     Close
                   </Button>
                   <Button 
-                    className="bg-green-600 hover:bg-green-700 text-white"
+                    className="bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm"
                     onClick={handleAddVoter}
                   >
                     Add Voter
@@ -287,27 +287,27 @@ const VoterManagement = () => {
 
       {voters.length === 0 ? (
         <Card className="bg-white dark:bg-gray-800">
-          <CardContent className="py-16">
+          <CardContent className="py-8 sm:py-16">
             <div className="text-center">
-              <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No voters added yet</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <Users className="h-12 w-12 sm:h-16 sm:w-16 text-gray-400 mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white mb-1 sm:mb-2">No voters added yet</h3>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-4 sm:mb-6">
                 Add voters individually or import them from a CSV file to get started.
               </p>
-              <div className="flex justify-center gap-3">
+              <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3">
                 <Button 
                   variant="outline" 
                   onClick={() => setIsImportOpen(true)}
-                  className="flex items-center space-x-2"
+                  className="flex items-center justify-center space-x-2 w-full sm:w-auto text-xs sm:text-sm"
                 >
-                  <Upload className="h-4 w-4" />
+                  <Upload className="h-3 w-3 sm:h-4 sm:w-4" />
                   <span>Import Voters</span>
                 </Button>
                 <Button 
                   onClick={() => setIsAddVoterOpen(true)}
-                  className="bg-blue-600 hover:bg-blue-700"
+                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto text-xs sm:text-sm"
                 >
-                  <Plus className="h-4 w-4 mr-2" />
+                  <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Add Your First Voter
                 </Button>
               </div>

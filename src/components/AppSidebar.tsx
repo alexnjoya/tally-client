@@ -1,4 +1,3 @@
-
 import { Home, Settings, Vote, Eye, Users, Send, User } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -19,7 +18,7 @@ export function AppSidebar() {
   const isActive = (path: string) => currentPath === path;
 
   return (
-    <div className="w-16 bg-gray-900 dark:bg-gray-950 flex flex-col items-center py-6 space-y-6">
+    <div className="w-16 bg-gray-900 dark:bg-gray-950 flex flex-col items-center pt-6 pb-4 space-y-6 h-full">
       <NavLink 
         to="/app/dashboard"
         className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-md flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
@@ -27,7 +26,7 @@ export function AppSidebar() {
         <div className="w-4 h-4 bg-white rounded opacity-80"></div>
       </NavLink>
       
-      <div className="flex flex-col space-y-4 px-2">
+      <div className="flex flex-col space-y-4 px-2 flex-1">
         {items.map((item) => (
           <NavLink
             key={item.title}

@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -101,73 +100,73 @@ const Addons = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Add-ons</h1>
-        <p className="text-gray-600 mt-2">Enhance your voting platform with powerful add-ons</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Add-ons</h1>
+        <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Enhance your voting platform with powerful add-ons</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {addons.map((addon) => {
           const IconComponent = addon.icon;
           return (
             <Card key={addon.id} className="relative hover:shadow-lg transition-shadow">
               {addon.popular && (
                 <div className="absolute -top-2 -right-2 z-10">
-                  <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
-                    <Star className="h-3 w-3 mr-1" />
+                  <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1">
+                    <Star className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1" />
                     Popular
                   </Badge>
                 </div>
               )}
               
-              <CardHeader>
+              <CardHeader className="pb-3 sm:pb-4">
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <IconComponent className="h-6 w-6 text-blue-600" />
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 bg-blue-100 rounded-lg">
+                      <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                     </div>
                     <div>
-                      <CardTitle className="text-lg">{addon.name}</CardTitle>
-                      <p className="text-sm font-medium text-green-600">{addon.price}</p>
+                      <CardTitle className="text-base sm:text-lg">{addon.name}</CardTitle>
+                      <p className="text-xs sm:text-sm font-medium text-green-600">{addon.price}</p>
                     </div>
                   </div>
                   <Switch checked={addon.installed} />
                 </div>
               </CardHeader>
               
-              <CardContent>
-                <p className="text-gray-600 mb-4">{addon.description}</p>
+              <CardContent className="space-y-3 sm:space-y-4">
+                <p className="text-xs sm:text-sm text-gray-600">{addon.description}</p>
                 
-                <div className="space-y-2 mb-4">
-                  <p className="text-sm font-medium">Features:</p>
+                <div className="space-y-2">
+                  <p className="text-xs sm:text-sm font-medium">Features:</p>
                   <ul className="space-y-1">
                     {addon.features.map((feature, index) => (
-                      <li key={index} className="text-sm text-gray-600 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        {feature}
+                      <li key={index} className="text-xs sm:text-sm text-gray-600 flex items-center gap-2">
+                        <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-600 rounded-full flex-shrink-0"></div>
+                        <span className="flex-1">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   {addon.installed ? (
                     <>
-                      <Button variant="outline" className="flex-1">
+                      <Button variant="outline" className="flex-1 text-xs sm:text-sm">
                         Configure
                       </Button>
-                      <Button variant="destructive" size="sm">
+                      <Button variant="destructive" size="sm" className="text-xs sm:text-sm">
                         Remove
                       </Button>
                     </>
                   ) : (
                     <>
-                      <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                        <Download className="h-4 w-4 mr-2" />
+                      <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-xs sm:text-sm">
+                        <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                         Install
                       </Button>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="text-xs sm:text-sm">
                         Learn More
                       </Button>
                     </>
@@ -180,13 +179,13 @@ const Addons = () => {
       </div>
 
       <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Need a Custom Add-on?</h3>
-              <p className="text-gray-600">Contact our development team to create custom functionality for your institution</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Need a Custom Add-on?</h3>
+              <p className="text-xs sm:text-sm text-gray-600 mt-1">Contact our development team to create custom functionality for your institution</p>
             </div>
-            <Button variant="outline">
+            <Button variant="outline" className="w-full sm:w-auto text-xs sm:text-sm">
               Contact Support
             </Button>
           </div>
