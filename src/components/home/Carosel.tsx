@@ -59,8 +59,13 @@ const CompanyCarousel = () => {
                     className="h-8 w-auto max-w-[120px] object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                     onError={(e) => {
                       // Fallback to text if image fails to load
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
+                      const img = e.target as HTMLImageElement;
+                      if (img) {
+                        img.style.display = 'none';
+                        if (img.nextSibling && img.nextSibling instanceof HTMLElement) {
+                          (img.nextSibling as HTMLElement).style.display = 'block';
+                        }
+                      }
                     }}
                   />
                   <span 
@@ -79,7 +84,7 @@ const CompanyCarousel = () => {
       </div>
 
       {/* Custom CSS for the scrolling animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);
