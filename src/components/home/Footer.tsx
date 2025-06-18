@@ -151,25 +151,30 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
-            <div className="flex flex-col space-y-2 sm:space-y-3 lg:space-y-2 text-xs sm:text-sm text-gray-400 order-2 lg:order-1">
-              <span className="text-center sm:text-left">© 2024 Tally. All rights reserved.</span>
-              <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4 lg:gap-6">
-                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center">Privacy Policy</a>
-                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center">Terms of Service</a>
-                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center">Cookie Policy</a>
+          <div className="flex flex-col space-y-6 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
+            {/* Copyright and Links - Centered on mobile */}
+            <div className="flex flex-col space-y-4 text-center lg:text-left lg:space-y-2 text-xs sm:text-sm text-gray-400 order-2 lg:order-1">
+              <span className="text-gray-500 font-medium">© 2024 Tally. All rights reserved.</span>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 lg:gap-8">
+                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center justify-center">Privacy Policy</a>
+                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center justify-center">Terms of Service</a>
+                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center justify-center">Cookie Policy</a>
               </div>
             </div>
-            <div className="text-xs sm:text-sm text-gray-500 text-center sm:text-right order-1 lg:order-2">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
-                <span className="whitespace-nowrap">Developed by</span>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mt-1 sm:mt-0">
-                  <div className="flex items-center justify-center sm:justify-start space-x-1 sm:space-x-2">
-                    <span className="text-blue-500 font-medium">Caleb Shalley</span>
-                    <span className="text-gray-400">&</span>
-                    <span className="text-blue-500 font-medium">Alex Njoya</span>
+            
+            {/* Developer Info - Centered on mobile */}
+            <div className="text-xs sm:text-sm text-gray-500 text-center lg:text-right order-1 lg:order-2">
+              <div className="flex flex-col items-center lg:items-end space-y-2 lg:space-y-1">
+                <span className="whitespace-nowrap text-gray-400">Developed by</span>
+                <div className="flex flex-col items-center lg:items-end space-y-1 lg:space-y-0">
+                  <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
+                    <div className="flex items-center space-x-1 sm:space-x-2">
+                      <span className="text-blue-500 font-medium">Caleb Shalley</span>
+                      <span className="text-gray-400">&</span>
+                      <span className="text-blue-500 font-medium">Alex Njoya</span>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-center sm:justify-start space-x-1 sm:space-x-2 mt-1 sm:mt-0">
+                  <div className="flex items-center space-x-1 sm:space-x-2">
                     <span className="hidden sm:inline text-gray-400">•</span>
                     <span className="text-gray-400">University of Ghana</span>
                   </div>

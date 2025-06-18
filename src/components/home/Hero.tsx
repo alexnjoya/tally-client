@@ -3,7 +3,7 @@ import { ArrowRight, Blocks, Vote, Shield, Eye, Lock, CheckCircle, Users, BarCha
 
 const Hero = () => {
   return (
-    <section className="relative pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-6 sm:pb-8 md:pb-12 lg:pb-24 bg-white overflow-hidden font-sans">
+    <section className="relative pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 lg:pb-24 bg-white overflow-hidden font-sans">
       {/* Import Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -236,16 +236,16 @@ const Hero = () => {
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="text-center">
           {/* Trust Badge - Mobile Optimized */}
-          <div className="inline-flex items-center space-x-1.5 sm:space-x-2 bg-white/90 backdrop-blur-sm border border-gray-200/80 text-gray-700 px-2.5 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 md:mb-6 lg:mb-8 shadow-sm">
-            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-blue-600 rounded-full animate-pulse"></div>
-            <Blocks className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4" />
+          <div className="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-sm border border-gray-200/80 text-gray-700 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 lg:mb-8 shadow-sm">
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-600 rounded-full animate-pulse"></div>
+            <Blocks className="h-3 w-3 sm:h-4 sm:w-4" />
             <span className="text-xs sm:text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Enterprise-Grade Blockchain Security</span>
           </div>
 
           {/* Main Headlines - Mobile Optimized */}
-          <div className="mb-3 sm:mb-4 md:mb-6 lg:mb-8">
+          <div className="mb-4 sm:mb-6 lg:mb-8">
             <h1 
-              className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-2 sm:mb-3 lg:mb-4 leading-[1.2] sm:leading-[1.1] md:leading-[0.9] tracking-tight px-2 sm:px-0"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-2 sm:mb-3 lg:mb-4 leading-[1.1] sm:leading-[0.9] tracking-tight px-2 sm:px-0"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               <span className="text-gray-900">Secure Digital</span>
@@ -253,12 +253,12 @@ const Hero = () => {
                 Democracy
               </span>
             </h1>
-            <div className="w-8 sm:w-12 md:w-16 lg:w-24 h-0.5 sm:h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            <div className="w-12 sm:w-16 lg:w-24 h-0.5 sm:h-1 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
 
           {/* Value Proposition - Mobile Optimized */}
           <p 
-            className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl text-gray-600 mb-4 sm:mb-6 md:mb-8 lg:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-2 sm:px-4 lg:px-0"
+            className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-8 lg:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-2 sm:px-4 lg:px-0"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Transform your organization's elections with our blockchain-powered platform. 
@@ -267,32 +267,32 @@ const Hero = () => {
           </p>
 
           {/* Social Proof - Mobile Optimized */}
-          <div className="flex flex-col space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-0 lg:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-8 mb-4 sm:mb-6 md:mb-8 lg:mb-12 px-2 sm:px-4 lg:px-0" style={{ fontFamily: "'Inter', sans-serif" }}>
-            <div className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm text-gray-600">
-              <CheckCircle className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-blue-600 flex-shrink-0" />
+          <div className="flex flex-col space-y-3 sm:space-y-4 lg:space-y-0 lg:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-8 mb-6 sm:mb-8 lg:mb-12 px-2 sm:px-4 lg:px-0" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
+              <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-blue-600 flex-shrink-0" />
               <span>Trusted by 500+ institutions</span>
             </div>
             <div className="hidden lg:block w-1 h-1 bg-gray-300 rounded-full"></div>
-            <div className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm text-gray-600">
-              <Shield className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-blue-600 flex-shrink-0" />
+            <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
+              <Shield className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-blue-600 flex-shrink-0" />
               <span>99.99% uptime guarantee</span>
             </div>
             <div className="hidden lg:block w-1 h-1 bg-gray-300 rounded-full"></div>
-            <div className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm text-gray-600">
-              <Lock className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-blue-600 flex-shrink-0" />
+            <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
+              <Lock className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-blue-600 flex-shrink-0" />
               <span>SOC 2 Type II certified</span>
             </div>
           </div>
 
           {/* CTA Section - Mobile Optimized */}
-          <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center mb-6 sm:mb-8 md:mb-12 lg:mb-20 px-2 sm:px-4 lg:px-0" style={{ fontFamily: "'Inter', sans-serif" }}>
-            <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-3 sm:px-4 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-200 flex items-center justify-center space-x-1.5 sm:space-x-2 shadow-lg hover:shadow-xl min-h-[40px] sm:min-h-[44px] md:min-h-[48px]">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 lg:mb-20 px-2 sm:px-4 lg:px-0" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl min-h-[44px] sm:min-h-[48px]">
               <span>Start Free Trial</span>
-              <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
             </button>
             
-            <button className="border border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-3 sm:px-4 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg bg-white/90 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-1.5 sm:space-x-2 shadow-sm hover:shadow-md min-h-[40px] sm:min-h-[44px] md:min-h-[48px]">
-              <Eye className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+            <button className="border border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg bg-white/90 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-sm hover:shadow-md min-h-[44px] sm:min-h-[48px]">
+              <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Watch Demo</span>
             </button>
           </div>
@@ -302,15 +302,15 @@ const Hero = () => {
             {/* Dashboard Container */}
             <div className="relative bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/80 overflow-hidden shadow-lg">
               {/* Modern Browser Header - Mobile Optimized */}
-              <div className="bg-gray-50/90 backdrop-blur-sm px-2 sm:px-3 md:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 border-b border-gray-200/80">
+              <div className="bg-gray-50/90 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 lg:py-4 border-b border-gray-200/80">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="flex space-x-1 sm:space-x-1.5 lg:space-x-2">
-                      <div className="w-1.5 h-1.5 sm:w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 bg-red-400 rounded-full"></div>
-                      <div className="w-1.5 h-1.5 sm:w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 bg-yellow-400 rounded-full"></div>
-                      <div className="w-1.5 h-1.5 sm:w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 bg-green-400 rounded-full"></div>
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-red-400 rounded-full"></div>
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-green-400 rounded-full"></div>
                     </div>
-                    <div className="text-xs sm:text-sm text-gray-500 bg-white/90 border border-gray-200 px-1.5 sm:px-2 md:px-4 py-0.5 sm:py-1 md:py-1.5 rounded-md sm:rounded-lg font-mono">
+                    <div className="text-xs sm:text-sm text-gray-500 bg-white/90 border border-gray-200 px-2 sm:px-4 py-1 sm:py-1.5 rounded-md sm:rounded-lg font-mono">
                       <span className="hidden sm:inline">https://app.securechain-vote.io</span>
                       <span className="sm:hidden">app.securechain-vote.io</span>
                     </div>
@@ -323,33 +323,33 @@ const Hero = () => {
               </div>
               
               {/* Dashboard Header - Mobile Optimized */}
-              <div className="bg-white/90 backdrop-blur-sm px-2 sm:px-3 md:px-4 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-6 border-b border-gray-100/80">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1.5 sm:space-y-2 md:space-y-3 lg:space-y-0">
+              <div className="bg-white/90 backdrop-blur-sm px-3 sm:px-4 lg:px-8 py-3 sm:py-4 lg:py-6 border-b border-gray-100/80">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-3 lg:space-y-0">
                   <div>
                     <h3 
-                      className="text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-gray-900"
+                      className="text-base sm:text-lg lg:text-2xl font-bold text-gray-900"
                       style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       Election Dashboard
                     </h3>
                     <p 
-                      className="text-gray-600 mt-0.5 sm:mt-1 text-xs sm:text-sm lg:text-base"
+                      className="text-gray-600 mt-1 text-xs sm:text-sm lg:text-base"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       Real-time blockchain monitoring
                     </p>
                   </div>
-                  <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 lg:space-x-4 bg-blue-50/90 backdrop-blur-sm text-blue-700 px-1.5 sm:px-2 md:px-3 lg:px-4 py-0.5 sm:py-1 md:py-1.5 lg:py-2 rounded-full border border-blue-200/60 self-start sm:self-auto">
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                  <div className="flex items-center space-x-2 bg-blue-50/90 backdrop-blur-sm text-blue-700 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-full border border-blue-200/60 self-start sm:self-auto">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full animate-pulse"></div>
                     <span className="text-xs sm:text-sm font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>Live</span>
                   </div>
                 </div>
               </div>
 
               {/* Dashboard Content - Mobile Optimized */}
-              <div className="p-2 sm:p-3 md:p-4 lg:p-8 bg-white/60 backdrop-blur-sm">
+              <div className="p-3 sm:p-4 lg:p-8 bg-white/60 backdrop-blur-sm">
                 {/* Key Metrics - Mobile Optimized Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 lg:gap-6 mb-3 sm:mb-4 md:mb-6 lg:mb-10">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-6 mb-4 sm:mb-6 lg:mb-10">
                   {[
                     { number: "2,847", label: "Total Votes", icon: Vote, trend: "+12%" },
                     { number: "99.9%", label: "Security Score", icon: Shield, trend: "Stable" },
@@ -358,13 +358,13 @@ const Hero = () => {
                   ].map((stat, index) => (
                     <div 
                       key={index} 
-                      className="bg-white/70 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-1.5 sm:p-2 md:p-3 lg:p-6 text-center group hover:bg-white/90 transition-all border border-gray-100/60 shadow-sm hover:shadow-md"
+                      className="bg-white/70 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-2 sm:p-3 lg:p-6 text-center group hover:bg-white/90 transition-all border border-gray-100/60 shadow-sm hover:shadow-md"
                     >
-                      <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-12 lg:h-12 mx-auto mb-1 sm:mb-2 lg:mb-4 bg-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <stat.icon className="h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 lg:h-6 lg:w-6 text-white" />
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 mx-auto mb-1 sm:mb-2 lg:mb-4 bg-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <stat.icon className="h-3 w-3 sm:h-4 sm:w-4 lg:h-6 lg:w-6 text-white" />
                       </div>
                       <div 
-                        className="text-xs sm:text-sm md:text-lg lg:text-3xl font-bold text-gray-900 mb-0.5 sm:mb-1"
+                        className="text-sm sm:text-lg lg:text-3xl font-bold text-gray-900 mb-0.5 sm:mb-1"
                         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         {stat.number}
@@ -386,24 +386,24 @@ const Hero = () => {
                 </div>
 
                 {/* Live Activity Feed - Mobile Optimized */}
-                <div className="bg-white/70 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-8 border border-gray-100/60">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 sm:mb-3 md:mb-4 lg:mb-6 space-y-1.5 sm:space-y-2 md:space-y-3 lg:space-y-0">
+                <div className="bg-white/70 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-8 border border-gray-100/60">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 sm:mb-4 lg:mb-6 space-y-2 sm:space-y-3 lg:space-y-0">
                     <h4 
-                      className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-gray-900 flex items-center"
+                      className="text-sm sm:text-base lg:text-xl font-semibold text-gray-900 flex items-center"
                       style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mr-1.5 sm:mr-2 md:mr-3 animate-pulse"></div>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
                       Live Blockchain Activity
                     </h4>
                     <span 
-                      className="text-xs sm:text-sm text-gray-500 bg-white/90 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full border border-gray-200/60"
+                      className="text-xs sm:text-sm text-gray-500 bg-white/90 px-2 sm:px-3 py-1 rounded-full border border-gray-200/60"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       Block Height: #892,347
                     </span>
                   </div>
                   
-                  <div className="space-y-1.5 sm:space-y-2 md:space-y-3 lg:space-y-4" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <div className="space-y-2 sm:space-y-3 lg:space-y-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                     {[
                       { 
                         action: "Vote verified and recorded", 
@@ -426,10 +426,10 @@ const Hero = () => {
                     ].map((item, index) => (
                       <div 
                         key={index} 
-                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-1.5 sm:p-2 md:p-3 lg:p-4 bg-white/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-100/70 hover:border-gray-200/80 transition-all space-y-1 sm:space-y-1.5 md:space-y-2 lg:space-y-0"
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-2 sm:p-3 lg:p-4 bg-white/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-100/70 hover:border-gray-200/80 transition-all space-y-1 sm:space-y-2 lg:space-y-0"
                       >
-                        <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 lg:space-x-4">
-                          <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-full flex-shrink-0 ${
+                        <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
+                          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0 ${
                             item.status === 'confirmed' ? 'bg-blue-500' : 'bg-yellow-500'
                           } ${item.status === 'confirmed' ? '' : 'animate-pulse'}`}></div>
                           <div>
@@ -451,7 +451,7 @@ const Hero = () => {
                 </div>
 
                 {/* Quick Actions - Mobile Optimized */}
-                <div className="mt-3 sm:mt-4 md:mt-6 lg:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <div className="mt-4 sm:mt-6 lg:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {[
                     { icon: Users, label: "Manage Voters", count: "1,247 active" },
                     { icon: BarChart3, label: "View Analytics", count: "Real-time data" },
@@ -459,10 +459,10 @@ const Hero = () => {
                   ].map((action, index) => (
                     <button
                       key={index}
-                      className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 p-1.5 sm:p-2 md:p-3 lg:p-4 bg-white/80 backdrop-blur-sm border border-gray-200/70 rounded-lg sm:rounded-xl hover:border-indigo-200/80 hover:bg-white/90 transition-all text-left group min-h-[36px] sm:min-h-[40px] md:min-h-[44px] lg:min-h-[48px]"
+                      className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 lg:p-4 bg-white/80 backdrop-blur-sm border border-gray-200/70 rounded-lg sm:rounded-xl hover:border-indigo-200/80 hover:bg-white/90 transition-all text-left group min-h-[44px] sm:min-h-[48px]"
                     >
-                      <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 bg-indigo-50/90 rounded-lg flex items-center justify-center group-hover:bg-indigo-100/90 transition-colors flex-shrink-0">
-                        <action.icon className="h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-indigo-600" />
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-indigo-50/90 rounded-lg flex items-center justify-center group-hover:bg-indigo-100/90 transition-colors flex-shrink-0">
+                        <action.icon className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-indigo-600" />
                       </div>
                       <div>
                         <div className="font-medium text-gray-900 text-xs sm:text-sm lg:text-base">{action.label}</div>
@@ -475,8 +475,8 @@ const Hero = () => {
             </div>
 
             {/* Floating Elements - Mobile Optimized */}
-            <div className="absolute -top-1 sm:-top-2 lg:-top-4 -right-1 sm:-right-2 lg:-right-4 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 lg:w-8 lg:h-8 bg-blue-500/50 rounded-full animate-ping"></div>
-            <div className="absolute -bottom-1 sm:-bottom-2 lg:-bottom-4 -left-1 sm:-left-2 lg:-left-4 w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 lg:w-6 lg:h-6 bg-indigo-400/40 rounded-full animate-pulse"></div>
+            <div className="absolute -top-1 sm:-top-2 lg:-top-4 -right-1 sm:-right-2 lg:-right-4 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-blue-500/50 rounded-full animate-ping"></div>
+            <div className="absolute -bottom-1 sm:-bottom-2 lg:-bottom-4 -left-1 sm:-left-2 lg:-left-4 w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6 bg-indigo-400/40 rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>
