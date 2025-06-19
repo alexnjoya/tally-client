@@ -8,23 +8,19 @@ import Footer from './Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Main container that moves together */}
-      <div className="relative w-full max-w-7xl mx-auto">
-        {/* Fixed navbar container */}
-        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full max-w-7xl z-50">
-          <Header />
-        </div>
-        
-        {/* Content sections */}
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* Sticky navbar at the top */}
+      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
+        <Header />
+      </header>
+      {/* Main content container */}
+      <main className="flex-1 w-full max-w-7xl mx-auto flex flex-col">
         <Hero />
-        <div className="px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6 sm:pb-8">
-          <Features />
-          <Security />
-          <CTA />
-        </div>
-        <Footer />
-      </div>
+        <Features />
+        <Security />
+        <CTA />
+      </main>
+      <Footer />
     </div>
   );
 };

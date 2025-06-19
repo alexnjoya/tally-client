@@ -27,7 +27,7 @@ const Features = () => {
   ];
   
   return (
-    <section id="features" className="py-8 sm:py-12 md:py-16 lg:py-24 relative overflow-hidden">
+    <section id="features" className="py-6 sm:py-12 md:py-16 lg:py-24 relative overflow-hidden">
       {/* Import Google Fonts */}
       <style>
         {`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');`}
@@ -72,7 +72,7 @@ const Features = () => {
         </motion.div>
         
         {/* Improved grid layout for better mobile responsiveness */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -107,15 +107,15 @@ const Features = () => {
         </div>
         
         {/* Enhanced call-to-action */}
-        <motion.div 
-          className="mt-8 sm:mt-12 md:mt-16 lg:mt-20 text-center"
+        <div
+          className="mt-6 sm:mt-12 md:mt-16 lg:mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
           <button 
-            className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white rounded-lg sm:rounded-xl font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 text-sm sm:text-base md:text-lg transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white rounded-lg sm:rounded-xl font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 text-xs sm:text-base md:text-lg transform hover:scale-105"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             <span>Learn More About Our Features</span>
@@ -124,7 +124,7 @@ const Features = () => {
               <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

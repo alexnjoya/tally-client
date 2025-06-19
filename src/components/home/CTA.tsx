@@ -3,7 +3,7 @@ import { Shield, Users, Zap, CheckCircle } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-28 relative overflow-hidden">
+    <section className="py-6 sm:py-12 md:py-16 lg:py-20 xl:py-28 relative overflow-hidden">
       {/* Import Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -20,6 +20,11 @@ const CTA = () => {
         .animate-carousel {
           animation: carousel 25s linear infinite;
         }
+
+        @media (max-width: 640px) {
+          .cta-logo-carousel { overflow-x: auto !important; }
+          .cta-logo-carousel-inner { min-width: 500px; }
+        }
       `}</style>
       
       {/* Subtle Background */}
@@ -35,14 +40,14 @@ const CTA = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12 md:mb-16">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-6 sm:mb-12 md:mb-16">
           {/* Accent Line */}
           <div className="w-8 sm:w-12 md:w-16 h-1 bg-indigo-600 mx-auto rounded-full mb-3 sm:mb-4 md:mb-6"></div>
           
           {/* Main Headline - Responsive */}
           <h2 
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6 leading-tight px-2 sm:px-0"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6 leading-tight px-1 sm:px-0"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Transform Your Organization's 
@@ -53,7 +58,7 @@ const CTA = () => {
           
           {/* Subheadline - Responsive */}
           <p 
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-4 sm:mb-6 md:mb-8 leading-relaxed px-2 sm:px-0"
+            className="text-xs sm:text-base md:text-lg lg:text-xl text-gray-600 mb-3 sm:mb-6 md:mb-8 leading-relaxed px-1 sm:px-0"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Join leading institutions worldwide who trust our platform for secure, 
@@ -63,7 +68,7 @@ const CTA = () => {
 
         {/* Trust Indicators - Responsive */}
         <div 
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 mb-6 sm:mb-8 md:mb-12 px-2 sm:px-0"
+          className="flex flex-wrap justify-center gap-1 sm:gap-3 md:gap-4 lg:gap-6 mb-4 sm:mb-8 md:mb-12 px-1 sm:px-0"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           {[
@@ -83,7 +88,7 @@ const CTA = () => {
         </div>
 
         {/* Feature Cards - Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6 md:gap-8">
           {[
             {
               icon: Shield,
@@ -125,7 +130,7 @@ const CTA = () => {
         </div>
 
         {/* Bottom Divider - Responsive */}
-        <div className="mt-8 sm:mt-12 md:mt-16 lg:mt-20 border-t border-gray-200 pt-6 sm:pt-8 md:pt-10 flex flex-col lg:flex-row justify-between items-center space-y-4 sm:space-y-6 lg:space-y-0">
+        <div className="mt-6 sm:mt-12 md:mt-16 lg:mt-20 border-t border-gray-200 pt-4 sm:pt-8 md:pt-10 flex flex-col lg:flex-row justify-between items-center space-y-2 sm:space-y-6 lg:space-y-0">
           <p 
             className="text-gray-500 text-xs sm:text-sm md:text-base text-center lg:text-left lg:pr-5 lg:whitespace-nowrap"
             style={{ fontFamily: "'Inter', sans-serif" }}
@@ -134,8 +139,8 @@ const CTA = () => {
           </p>
           
           {/* Client Logos Carousel - Responsive */}
-          <div className="w-full lg:w-auto overflow-hidden relative">
-            <div className="flex animate-carousel">
+          <div className="w-full lg:w-auto overflow-x-auto cta-logo-carousel relative">
+            <div className="flex animate-carousel cta-logo-carousel-inner">
               {/* First set of logos */}
               <div className="flex space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12 items-center min-w-max px-2 sm:px-4">
                 {/* Stripe */}

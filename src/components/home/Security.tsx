@@ -4,7 +4,7 @@ import { CheckCircle, Lock, Shield, Eye, KeyRound, Database } from "lucide-react
 
 const Security = () => {
   return (
-    <section id="security" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-32 relative overflow-hidden">
+    <section id="security" className="py-6 sm:py-12 md:py-16 lg:py-20 xl:py-32 relative overflow-hidden">
       {/* Import Google Fonts */}
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -33,7 +33,7 @@ const Security = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left Content Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
