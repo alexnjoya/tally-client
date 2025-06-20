@@ -72,11 +72,11 @@ const Features = () => {
         </motion.div>
         
         {/* Improved grid layout for better mobile responsiveness */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 md:gap-8">
+        <div className="flex flex-col items-center sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-indigo-200"
+              className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-indigo-200 mb-4 sm:mb-0 w-full max-w-xs sm:max-w-none mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -86,15 +86,13 @@ const Features = () => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 md:mb-6 mx-auto group-hover:shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300 group-hover:scale-110">
                 <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
               </div>
-              
               {/* Enhanced title */}
               <h3 
-                className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 md:mb-4 text-center leading-tight"
+                className="text-sm sm:text-lg md:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 md:mb-4 text-center leading-tight"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 {feature.title}
               </h3>
-              
               {/* Enhanced description */}
               <p 
                 className="text-xs sm:text-sm md:text-base text-gray-600 text-center leading-relaxed"
@@ -105,26 +103,25 @@ const Features = () => {
             </motion.div>
           ))}
         </div>
-        
         {/* Enhanced call-to-action */}
-        <div
-          className="mt-6 sm:mt-12 md:mt-16 lg:mt-20 text-center"
+        <motion.div
+          className="mt-4 sm:mt-12 md:mt-16 lg:mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
           <button 
-            className="inline-flex items-center gap-2 px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white rounded-lg sm:rounded-xl font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 text-xs sm:text-base md:text-lg transform hover:scale-105"
+            className="inline-flex items-center gap-1 px-2 py-4 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white rounded-md sm:rounded-xl font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 text-xs sm:text-base md:text-lg transform hover:scale-105"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            <span>Learn More About Our Features</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1">
+            <span className="text-xs sm:text-base md:text-lg">Learn More About Our Features</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1">
               <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

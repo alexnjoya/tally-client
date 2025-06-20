@@ -285,13 +285,12 @@ const Hero = () => {
           </div>
 
           {/* CTA Section - Mobile Optimized */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 lg:mb-20 px-2 sm:px-4 lg:px-0" style={{ fontFamily: "'Inter', sans-serif" }}>
-            <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl min-h-[44px] sm:min-h-[48px]">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mb-6 sm:mb-12 lg:mb-20 px-1 sm:px-4 lg:px-0" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-base lg:text-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl min-h-[36px] sm:min-h-[48px] max-w-xs w-full mx-auto sm:max-w-none sm:w-auto">
               <span>Start Free Trial</span>
               <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            
-            <button className="border border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg bg-white/90 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-sm hover:shadow-md min-h-[44px] sm:min-h-[48px]">
+            <button className="border border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-3 py-2 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-base lg:text-lg bg-white/90 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-sm hover:shadow-md min-h-[36px] sm:min-h-[48px] max-w-xs w-full mx-auto sm:max-w-none sm:w-auto">
               <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Watch Demo</span>
             </button>
@@ -300,7 +299,7 @@ const Hero = () => {
           {/* Modern Dashboard Preview - Mobile Optimized */}
           <div className="relative max-w-5xl mx-auto px-2 sm:px-0">
             {/* Dashboard Container */}
-            <div className="relative bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/80 overflow-hidden shadow-lg">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/80 overflow-hidden shadow-lg sm:block hidden">
               {/* Modern Browser Header - Mobile Optimized */}
               <div className="bg-gray-50/90 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 lg:py-4 border-b border-gray-200/80">
                 <div className="flex items-center justify-between">
@@ -321,7 +320,6 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              
               {/* Dashboard Header - Mobile Optimized */}
               <div className="bg-white/90 backdrop-blur-sm px-3 sm:px-4 lg:px-8 py-3 sm:py-4 lg:py-6 border-b border-gray-100/80">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-3 lg:space-y-0">
@@ -345,7 +343,6 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-
               {/* Dashboard Content - Mobile Optimized */}
               <div className="p-3 sm:p-4 lg:p-8 bg-white/60 backdrop-blur-sm">
                 {/* Key Metrics - Mobile Optimized Grid */}
@@ -384,7 +381,6 @@ const Hero = () => {
                     </div>
                   ))}
                 </div>
-
                 {/* Live Activity Feed - Mobile Optimized */}
                 <div className="bg-white/70 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-8 border border-gray-100/60">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 sm:mb-4 lg:mb-6 space-y-2 sm:space-y-3 lg:space-y-0">
@@ -402,7 +398,6 @@ const Hero = () => {
                       Block Height: #892,347
                     </span>
                   </div>
-                  
                   <div className="space-y-2 sm:space-y-3 lg:space-y-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                     {[
                       { 
@@ -449,7 +444,6 @@ const Hero = () => {
                     ))}
                   </div>
                 </div>
-
                 {/* Quick Actions - Mobile Optimized */}
                 <div className="mt-4 sm:mt-6 lg:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {[
@@ -473,10 +467,55 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-
-            {/* Floating Elements - Mobile Optimized */}
-            <div className="absolute -top-1 sm:-top-2 lg:-top-4 -right-1 sm:-right-2 lg:-right-4 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-blue-500/50 rounded-full animate-ping"></div>
-            <div className="absolute -bottom-1 sm:-bottom-2 lg:-bottom-4 -left-1 sm:-left-2 lg:-left-4 w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6 bg-indigo-400/40 rounded-full animate-pulse"></div>
+            {/* Mobile Dashboard Content (no background) */}
+            <div className="block sm:hidden w-full">
+              {/* Key Metrics - Mobile Optimized Grid */}
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {[
+                  { number: "2,847", label: "Total Votes", icon: Vote, trend: "+12%" },
+                  { number: "99.9%", label: "Security Score", icon: Shield, trend: "Stable" },
+                  { number: "24/7", label: "Active Monitoring", icon: Eye, trend: "Online" },
+                  { number: "100%", label: "Transparency", icon: Lock, trend: "Verified" }
+                ].map((stat, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-white rounded-lg p-2 text-center border border-gray-100 shadow-sm"
+                  >
+                    <div className="w-6 h-6 mx-auto mb-1 bg-indigo-600 rounded-lg flex items-center justify-center">
+                      <stat.icon className="h-3 w-3 text-white" />
+                    </div>
+                    <div className="text-xs font-bold text-gray-900 mb-0.5">
+                      {stat.number}
+                    </div>
+                    <div className="text-[10px] text-gray-600 mb-0.5">
+                      {stat.label}
+                    </div>
+                    <div className="text-[10px] text-blue-600 font-medium">
+                      {stat.trend}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Live Activity Feed - Mobile Optimized */}
+              <div className="bg-white rounded-lg p-2 border border-gray-100 mb-2">
+                <div className="flex flex-col mb-2">
+                  <h4 className="text-xs font-semibold text-gray-900 flex items-center mb-1">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
+                    Live Blockchain Activity
+                  </h4>
+                  <span className="text-[10px] text-gray-500 bg-white px-2 py-1 rounded-full border border-gray-200 w-fit">
+                    Block Height: #892,347
+                  </span>
+                </div>
+                <div className="space-y-1">
+                  {/* ...activity feed items... */}
+                </div>
+              </div>
+              {/* Quick Actions - Mobile Optimized */}
+              <div className="mt-2 grid grid-cols-1 gap-2">
+                {/* ...quick action buttons... */}
+              </div>
+            </div>
           </div>
         </div>
       </div>

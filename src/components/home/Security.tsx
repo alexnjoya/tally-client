@@ -4,7 +4,7 @@ import { CheckCircle, Lock, Shield, Eye, KeyRound, Database } from "lucide-react
 
 const Security = () => {
   return (
-    <section id="security" className="py-6 sm:py-12 md:py-16 lg:py-20 xl:py-32 relative overflow-hidden">
+    <section id="security" className="py-6  sm:py-12 md:py-16 lg:py-20 xl:py-32 relative overflow-hidden">
       {/* Import Google Fonts */}
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -145,7 +145,7 @@ const Security = () => {
             viewport={{ once: true }}
           >
             {/* Main Security Card */}
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg relative overflow-hidden border border-gray-200">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg relative overflow-hidden border border-gray-200 max-w-xs w-full mx-auto lg:max-w-full">
               {/* Abstract Security Pattern */}
               <div className="absolute inset-0 opacity-[0.03]">
                 <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -175,7 +175,7 @@ const Security = () => {
                   </h3>
                   
                   <p 
-                    className="text-gray-600 mt-2 max-w-sm mx-auto text-xs sm:text-sm md:text-base"
+                    className="text-gray-600 mt-2 max-w-xs mx-auto text-xs sm:text-sm md:text-base"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     Advanced cryptographic protection and consensus mechanisms
@@ -206,7 +206,7 @@ const Security = () => {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 shadow-sm hover:shadow transition-shadow border border-gray-100"
+                      className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 shadow-sm hover:shadow transition-shadow border border-gray-100 max-w-xs w-full mx-auto lg:max-w-full"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -218,14 +218,14 @@ const Security = () => {
                             <item.icon className={`h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 text-${item.color}-600`} />
                           </div>
                           <span 
-                            className="text-gray-600 text-xs sm:text-sm md:text-base truncate"
+                            className="text-gray-600 text-xs sm:text-sm md:text-base break-words whitespace-normal"
                             style={{ fontFamily: "'Inter', sans-serif" }}
                           >
                             {item.label}
                           </span>
                         </div>
                         <span 
-                          className="text-gray-900 font-semibold text-xs sm:text-sm md:text-base ml-2 flex-shrink-0"
+                          className="text-gray-900 font-semibold text-xs sm:text-sm md:text-base ml-2 flex-shrink-0 break-words whitespace-normal"
                           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                         >
                           {item.value}

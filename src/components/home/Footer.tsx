@@ -151,31 +151,27 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col space-y-6 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
-            {/* Copyright and Links - Centered on mobile */}
-            <div className="flex flex-col space-y-4 text-center lg:text-left lg:space-y-2 text-xs sm:text-sm text-gray-400 order-2 lg:order-1">
+          <div className="flex flex-col items-start text-left space-y-6 lg:flex-row lg:justify-between lg:items-center lg:space-y-0 w-full">
+            {/* Copyright and Links */}
+            <div className="flex flex-col space-y-4 text-left text-xs sm:text-sm text-gray-400 order-2 lg:order-1">
               <span className="text-gray-500 font-medium">© 2024 Tally. All rights reserved.</span>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 lg:gap-8">
-                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center justify-center">Privacy Policy</a>
-                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center justify-center">Terms of Service</a>
-                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 sm:py-1.5 min-h-[44px] sm:min-h-[48px] flex items-center justify-center">Cookie Policy</a>
+              <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-6">
+                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 min-h-[44px] flex items-start">Privacy Policy</a>
+                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 min-h-[44px] flex items-start">Terms of Service</a>
+                <a href="#" className="hover:text-blue-600 transition-colors whitespace-nowrap py-1 min-h-[44px] flex items-start">Cookie Policy</a>
               </div>
             </div>
-            
-            {/* Developer Info - Centered on mobile */}
-            <div className="text-xs sm:text-sm text-gray-500 text-center lg:text-right order-1 lg:order-2">
-              <div className="flex flex-col items-center lg:items-end space-y-2 lg:space-y-1">
+            {/* Developer Info */}
+            <div className="text-xs mr-5 sm:text-sm text-gray-500 text-left order-1 lg:order-2 mt-4 lg:mt-0">
+              <div className="flex flex-col items-start space-y-2">
                 <span className="whitespace-nowrap text-gray-400">Developed by</span>
-                <div className="flex flex-col items-center lg:items-end space-y-1 lg:space-y-0">
-                  <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                    <div className="flex items-center space-x-1 sm:space-x-2">
-                      <span className="text-blue-500 font-medium">Caleb Shalley</span>
-                      <span className="text-gray-400">&</span>
-                      <span className="text-blue-500 font-medium">Alex Njoya</span>
-                    </div>
+                <div className="flex flex-col items-start space-y-1">
+                  <div className="flex flex-col sm:flex-row items-start sm:space-x-2">
+                    <span className="text-blue-500 font-medium">Caleb Shalley</span>
+                    <span className="text-gray-400">&</span>
+                    <span className="text-blue-500 font-medium">Alex Njoya</span>
                   </div>
-                  <div className="flex items-center space-x-1 sm:space-x-2">
-                    <span className="hidden sm:inline text-gray-400">•</span>
+                  <div className="flex items-start space-x-2">
                     <span className="text-gray-400">University of Ghana</span>
                   </div>
                 </div>
