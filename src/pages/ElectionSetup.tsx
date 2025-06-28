@@ -34,17 +34,16 @@ const ElectionSetup = () => {
   const steps = [
     { number: 1, title: "General", status: completedSteps.includes(1) ? "completed" : currentStep === 1 ? "current" : "pending" },
     { number: 2, title: "Dates", status: completedSteps.includes(2) ? "completed" : currentStep === 2 ? "current" : "pending" },
-    { number: 3, title: "Voters", status: completedSteps.includes(3) ? "completed" : currentStep === 3 ? "current" : "pending" },
-    { number: 4, title: "Message", status: completedSteps.includes(4) ? "completed" : currentStep === 4 ? "current" : "pending" },
-    { number: 5, title: "Results", status: completedSteps.includes(5) ? "completed" : currentStep === 5 ? "current" : "pending" },
-    { number: 6, title: "Delete", status: completedSteps.includes(6) ? "completed" : currentStep === 6 ? "current" : "pending" }
+    { number: 3, title: "Message", status: completedSteps.includes(4) ? "completed" : currentStep === 4 ? "current" : "pending" },
+    { number: 4, title: "Results", status: completedSteps.includes(5) ? "completed" : currentStep === 5 ? "current" : "pending" },
+    { number: 5, title: "Delete", status: completedSteps.includes(6) ? "completed" : currentStep === 6 ? "current" : "pending" }
   ];
 
   const handleNext = () => {
     if (!completedSteps.includes(currentStep)) {
       setCompletedSteps([...completedSteps, currentStep]);
     }
-    if (currentStep < 6) {
+    if (currentStep < 5) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -168,38 +167,6 @@ const ElectionSetup = () => {
       case 3:
         return (
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Voters</h2>
-            <div className="space-y-6">
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Weighted Voting</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Enabling this option will allow you to assign weights to each voter's vote.</p>
-                </div>
-                <Switch checked={weightedVoting} onCheckedChange={setWeightedVoting} />
-              </div>
-
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Ballot Receipt</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Enabling this option will allow voters to download a receipt that confirms their ballot has been received.</p>
-                </div>
-                <Switch checked={ballotReceipt} onCheckedChange={setBallotReceipt} />
-              </div>
-
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Submit Ballot Confirmation</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">When this option is enabled, voters will receive an alert when they submit their ballot that allows them to continue or cancel and make additional changes. This can be used as a way to prevent accidental submissions or to require voters to double check their ballot.</p>
-                </div>
-                <Switch checked={submitConfirmation} onCheckedChange={setSubmitConfirmation} />
-              </div>
-            </div>
-          </div>
-        );
-
-      case 4:
-        return (
-          <div className="space-y-6">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Voters Settings</h2>
             <div className="space-y-6">
               <div>
@@ -241,7 +208,7 @@ const ElectionSetup = () => {
           </div>
         );
 
-      case 5:
+      case 4:
         return (
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Results</h2>
@@ -251,7 +218,7 @@ const ElectionSetup = () => {
           </div>
         );
 
-      case 6:
+      case 5:
         return (
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-red-600 mb-4">Delete Election</h2>
@@ -333,7 +300,7 @@ const ElectionSetup = () => {
                 Previous
               </Button>
               
-              {currentStep < 6 ? (
+              {currentStep < 5 ? (
                 <Button 
                   onClick={handleNext}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"

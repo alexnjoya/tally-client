@@ -143,6 +143,8 @@ const BallotBuilder = () => {
                       <li><strong>portfolio</strong> - Position running for (required)</li>
                       <li><strong>shortDescription</strong> - Brief description</li>
                       <li><strong>description</strong> - Detailed description</li>
+                      <li><strong>Image</strong> - Image of aspirates</li>
+
                     </ul>
                   </div>
                 </div>
@@ -172,38 +174,7 @@ const BallotBuilder = () => {
               </DialogHeader>
               
               <div className="space-y-4 sm:space-y-6 py-2 sm:py-4">
-                {/* Ballot Info */}
-                <div className="space-y-3 sm:space-y-4">
-                  <div>
-                    <Label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Ballot Title</Label>
-                    <Input 
-                      placeholder="e.g., Student Council Elections 2024"
-                      value={ballotData.title}
-                      onChange={(e) => setBallotData({...ballotData, title: e.target.value})}
-                      className="bg-white dark:bg-gray-800 text-xs sm:text-sm"
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Description</Label>
-                    <Textarea 
-                      placeholder="Brief description of this ballot..."
-                      value={ballotData.description}
-                      onChange={(e) => setBallotData({...ballotData, description: e.target.value})}
-                      className="bg-white dark:bg-gray-800 text-xs sm:text-sm"
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 block">Voting Type</Label>
-                    <select 
-                      value={ballotData.type}
-                      onChange={(e) => setBallotData({...ballotData, type: e.target.value as 'single-choice' | 'multiple-choice'})}
-                      className="w-full p-2 border rounded-md bg-white dark:bg-gray-800 text-xs sm:text-sm"
-                    >
-                      <option value="single-choice">Single Choice</option>
-                      <option value="multiple-choice">Multiple Choice</option>
-                    </select>
-                  </div>
-                </div>
+               
 
                 {/* Add Candidate Section */}
                 <div className="border-t pt-4 sm:pt-6">
