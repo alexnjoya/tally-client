@@ -47,9 +47,9 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-white border-t border-gray-200 overflow-hidden">
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-6 sm:pb-8">
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 pt-12 sm:pt-12 lg:pt-16 pb-8 sm:pb-8">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-8 lg:gap-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

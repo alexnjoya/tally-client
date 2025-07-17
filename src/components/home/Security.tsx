@@ -145,7 +145,7 @@ const Security = () => {
             viewport={{ once: true }}
           >
             {/* Main Security Card */}
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg relative overflow-hidden border border-gray-200 max-w-xs w-full mx-auto lg:max-w-full">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg sm:rounded-xl md:rounded-2xl p-6 sm:p-6 md:p-8 shadow-lg relative overflow-hidden border border-gray-200 w-full">
               {/* Abstract Security Pattern */}
               <div className="absolute inset-0 opacity-[0.03]">
                 <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -206,7 +206,7 @@ const Security = () => {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 shadow-sm hover:shadow transition-shadow border border-gray-100 max-w-xs w-full mx-auto lg:max-w-full"
+                      className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-4 md:p-5 shadow-sm hover:shadow transition-shadow border border-gray-100 w-full"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}

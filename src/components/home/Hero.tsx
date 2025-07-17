@@ -284,26 +284,25 @@ const Hero = () => {
             </div>
           </div>
 
-            {/* CTA Section - Mobile Optimized */}
-            <div
-              className="flex flex-col sm:flex-row justify-center mb-6 sm:mb-12 lg:mb-20 px-1 sm:px-4 lg:px-0"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-base lg:text-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl min-h-[36px] sm:min-h-[48px] max-w-xs w-full mx-auto sm:max-w-none sm:w-auto">
+          {/* CTA Section - Mobile Optimized */}
+          <div
+            className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-12 lg:mb-20 px-2 sm:px-4 lg:px-0"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 sm:px-6 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl min-h-[48px] w-full sm:w-auto">
               <span>Start Free Trial</span>
               <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <div className="h-2 sm:w-2 lg:w-1" />
-            <button className="border border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-3 py-2 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-base lg:text-lg bg-white/90 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-sm hover:shadow-md min-h-[36px] sm:min-h-[48px] max-w-xs w-full mx-auto sm:max-w-none sm:w-auto">
+            </button>
+            <button className="border border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-4 py-3 sm:px-6 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg bg-white/90 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-sm hover:shadow-md min-h-[48px] w-full sm:w-auto">
               <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Watch Demo</span>
             </button>
-            </div>
+          </div>
 
           {/* Modern Dashboard Preview - Mobile Optimized */}
           <div className="relative max-w-5xl mx-auto px-2 sm:px-0">
             {/* Dashboard Container */}
-            <div className="relative bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/80 overflow-hidden shadow-lg sm:block hidden">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/80 overflow-hidden shadow-lg block">
               {/* Modern Browser Header - Mobile Optimized */}
               <div className="bg-gray-50/90 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 lg:py-4 border-b border-gray-200/80">
                 <div className="flex items-center justify-between">

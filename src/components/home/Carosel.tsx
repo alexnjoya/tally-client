@@ -25,27 +25,27 @@ const CompanyCarousel = () => {
   const duplicatedCompanies = [...companies, ...companies];
 
   return (
-    <div className="w-full bg-gradient-to-br from-slate-50 to-white py-10 sm:py-20 overflow-x-auto">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div className="w-full bg-gradient-to-br from-slate-50 to-white py-12 sm:py-20 overflow-x-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-2 bg-blue-50 border border-blue-200 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full text-blue-700 text-sm font-medium mb-6">
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
             Trusted by Leading Startups
           </div>
-          <p className="text-base sm:text-xl text-slate-600 max-w-xs sm:max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto px-4">
             Powering the next generation of companies building the future
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative mb-8 sm:mb-16 overflow-x-auto">
+        <div className="relative mb-12 sm:mb-16 overflow-x-auto">
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
           
           {/* Moving Container */}
-          <div className="flex space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12 min-w-max animate-scroll">
+          <div className="flex space-x-8 sm:space-x-6 md:space-x-8 lg:space-x-12 min-w-max animate-scroll">
             {duplicatedCompanies.map((company, index) => (
               <div
                 key={`${company.name}-${index}`}

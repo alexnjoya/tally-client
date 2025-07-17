@@ -88,7 +88,7 @@ const CTA = () => {
         </div>
 
         {/* Feature Cards - Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
           {[
             {
               icon: Shield,
@@ -108,7 +108,7 @@ const CTA = () => {
           ].map((card, index) => (
             <div 
               key={index} 
-              className="flex flex-col items-center text-center p-3 sm:p-4 md:p-6"
+              className="flex flex-col items-center text-center p-6 sm:p-4 md:p-6"
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-indigo-50 rounded-full flex items-center justify-center mb-3 sm:mb-4 md:mb-5">
                 <card.icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-indigo-600" />

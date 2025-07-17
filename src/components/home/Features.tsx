@@ -72,11 +72,11 @@ const Features = () => {
         </motion.div>
         
         {/* Improved grid layout for better mobile responsiveness */}
-        <div className="flex flex-col items-center sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-indigo-200 mb-4 sm:mb-0 w-full max-w-xs sm:max-w-none mx-auto"
+              className="group bg-white/80 backdrop-blur-sm p-6 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-indigo-200 w-full"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
